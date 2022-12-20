@@ -4,14 +4,13 @@
  */
 package com.mycompany.projectuas.service;
 
-import com.mycompany.projectuas.pojo.Admin;
-import com.mycompany.projectuas.repository.RepositoryAkun;
+import com.mycompany.projectuas.pojo.Playstation;
 import com.mycompany.projectuas.repository.RepositoryCrud;
 
 /**
  *
  * @author lenovo
  */
-public interface AdminService extends RepositoryCrud<Admin, Integer> {
+public interface PlaystationService extends RepositoryCrud<Playstation, Integer>{
     
 }

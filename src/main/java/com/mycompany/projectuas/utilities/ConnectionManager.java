@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author lenovo
  */
 public class ConnectionManager {
-    private String DB_URL ="jdbc:mysql://localhost:3306/";
+    private String DB_URL ="jdbc:mysql://localhost:3306/rental_ps";
     private String username;
     private String password;
     private Connection connection;

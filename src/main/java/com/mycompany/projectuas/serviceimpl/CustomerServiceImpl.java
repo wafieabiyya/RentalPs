@@ -8,6 +8,6 @@ package com.mycompany.projectuas.serviceimpl;
  *
  * @author lenovo
  */
-public class AdminImpl {
+public class CustomerServiceImpl {
     
 }

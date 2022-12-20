@@ -9,25 +9,17 @@ package com.mycompany.projectuas.pojo;
  * @author lenovo
  */
 public class Akun {
-    private int ID;
     private String email;
+    private String username;
     private String password;
 
     public Akun() {
     }
 
-    public Akun(int ID, String email, String password) {
-        this.ID = ID;
+    public Akun(String email, String username, String password) {
         this.email = email;
+        this.username = username;
         this.password = password;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public String getEmail() {
@@ -36,6 +28,14 @@ public class Akun {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

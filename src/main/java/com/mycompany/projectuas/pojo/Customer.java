@@ -12,5 +12,48 @@ public class Customer {
     private int id;
     private String namaCustomer;
     private String alamat;
+    private String statusCustomer;
+
+    public Customer() {
+    }
+
+    public Customer(int id, String namaCustomer, String alamat) {
+        this.id = id;
+        this.namaCustomer = namaCustomer;
+        this.alamat = alamat;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNamaCustomer() {
+        return namaCustomer;
+    }
+
+    public void setNamaCustomer(String namaCustomer) {
+        this.namaCustomer = namaCustomer;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getStatusCustomer() {
+        return statusCustomer;
+    }
+
+    public void setStatusCustomer(String statusCustomer) {
+        this.statusCustomer = statusCustomer;
+    }
+    
     
 }
