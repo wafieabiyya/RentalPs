@@ -55,4 +55,5 @@ public class Playstation {
     public void setHargaSewa(double hargaSewa) {
         this.hargaSewa = hargaSewa;
     }
+    
   }

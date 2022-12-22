@@ -20,10 +20,12 @@ public class ConnectionManager {
     private String password;
     private Connection connection;
 
-    public ConnectionManager(String username, String password, Connection connection) {
-        this.username = username;
-        this.password = password;
-        this.connection = connection;
+   
+
+    public ConnectionManager() {
+        this.username = "root";
+        this.password = "";
+        
     }
 
     public String getDB_URL() {
@@ -69,6 +71,16 @@ public class ConnectionManager {
                 Logger.getLogger(ConnectionManager.class.getName())
                         .log(Level.SEVERE, null, ex);
             }
+        }
+        return connection;
+    }
+    public Connection dc (){
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            Logger.getLogger(ConnectionManager.class.getName())
+                    .log(Level.SEVERE, null, e);
+                    
         }
         return connection;
     }

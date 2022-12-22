@@ -4,13 +4,13 @@
  */
 package com.mycompany.projectuas.service;
 
-import com.mycompany.projectuas.pojo.Akun;
+import com.mycompany.projectuas.pojo.Admin;
 import com.mycompany.projectuas.repository.RepositoryAkun;
 
 /**
  *
  * @author lenovo
  */
-public interface AkunService extends RepositoryAkun<Akun, Integer>{
+public interface AkunService extends RepositoryAkun<Admin, Integer>{
     
 }
