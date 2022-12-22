@@ -8,6 +8,6 @@ package com.mycompany.projectuas.view;
  *
  * @author lenovo
  */
-public class GameView {
+public class ManageGame {
     
 }

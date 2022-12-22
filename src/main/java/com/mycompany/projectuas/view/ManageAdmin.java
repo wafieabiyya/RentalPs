@@ -10,6 +10,7 @@ import com.mycompany.projectuas.serviceimpl.AdminServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.SpringLayout;
 
 /**
  *
@@ -45,13 +46,88 @@ public class ManageAdmin {
                 case 1:
                     char display;
                     admin = new Admin();
+                    insertAdmin(admin);
+                    System.out.print("Apakah Data Ingin Ditampilkan? y/n: ");
+                    display = sc.next().charAt(0);
+                    if(display == 'Y'|| display == 'y'){
+                        adminService = new AdminServiceImpl();
+                        listAdmin = adminService.findAll();
+                        FindAllAdmin(listAdmin);
+                    }
+                case 2:
+                    int updadtedId;
+                    Admin updatedAdmin = new Admin();
+                    System.out.print("Masukan ID: ");
+                    updadtedId = sc.nextInt();
+                    updatedAdmin = findAdmin(updadtedId);
+                    System.out.println("Data Admin Yang Akan DiUpdate:");
+                    if (updatedAdmin != null){
+                        System.out.println("ID Admin: "+updatedAdmin.getID());
+                        System.out.println("Nama Admin: "+updatedAdmin.getNamaAdmin());  
+                    }
+                    else {
+                        System.out.println("Data Not Founded!");
+                    }
+                    System.out.println("");
+                    System.out.println("Insert New Data!");
+                    editAdmin(updatedAdmin.getID());
+                    
+                    break;
+                case 3:
+                    int deletedId;
+                    Admin deletedAdmin = new Admin();
+                    char confirmation;
+                    adminService = new AdminServiceImpl();
+                    
+                    System.out.print("Masukan ID: ");
+                    deletedId = sc.nextInt();
+                    deletedAdmin = findAdmin(deletedId);
+                    System.out.print("Yakin Untuk Menghapus ID? y/n: ");
+                    confirmation = sc.next().charAt(0);
+                    if (confirmation == 'Y'||confirmation == 'y'){
+                        adminService.delete(deletedId);
+                        System.out.println("Data Deleted!");
+                        System.out.println("");
+                    }
+                    else {
+                        System.out.println("Data Not Founded!");
+                    }
+                    break;
+                case 4:
+                    adminService = new AdminServiceImpl ();
+                    listAdmin = adminService.findAll();
+                    FindAllAdmin(listAdmin);
+                    break;
+                case 5:
+                    int searchedId;
+                    Admin searchedAdmin = new Admin();
+                    System.out.print("Masukan ID: ");
+                    searchedId = sc.nextInt();
+                    searchedAdmin = findAdmin(searchedId);
+                    if (searchedAdmin != null){
+                         System.out.println("-----------------------------------------------------------------");
+                        System.out.print("ID Admin \t\t: "+searchedAdmin.getID());
+                        System.out.print("Nama Admin \t\t: "+searchedAdmin.getNamaAdmin());
+                        System.out.println("-----------------------------------------------------------------");
+                    }
+                    else{
+                        System.out.println("Data Not Founded!");
+                    }
                     break;
                 default:
-                    throw new AssertionError();
+                    System.out.println("Pilihan yang Anda masukkan salah!");
+                 break;
             }
+            System.out.println("");
+            System.out.print("Ingin Lanjut? y/n: ");
+            choice = sc.next().charAt(0);
+            if (choice == 'N'|| choice == 'n'){
+                endSesion = true;
+            }
+            
         }
         while (!endSesion);
-      
+        System.out.println("Back To Main Menu");
     }
     public static void FindAllAdmin(List<Admin> listAdmin){
         for (Admin admin : listAdmin){
@@ -78,10 +154,11 @@ public class ManageAdmin {
     public static Admin  findAdmin(int updatedId){
         admin = new Admin();
         adminService = new AdminServiceImpl();
+        admin = adminService.findById(updatedId);
         
         return admin;
     }
-    public static void editAdmin(Admin admin){
+    public static void editAdmin(Integer Admin){
         adminService = new AdminServiceImpl();
         admin = new Admin();
         String namaAdmin;
@@ -92,7 +169,6 @@ public class ManageAdmin {
         admin.setNamaAdmin(namaAdmin);
         adminService.update(admin);
         System.out.println("Admin Edited!");
-        System.out.println("");
-        
+        System.out.println(""); 
     }
 }
