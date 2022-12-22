@@ -41,7 +41,7 @@ public class PlaystationServiceImpl implements PlaystationService{
          while (rs.next()){
              Playstation playstation = new Playstation();
              playstation.setIdPs(rs.getInt("ID_ps"));
-             playstation.setJensisPs(rs.getString("jenis_ps"));
+             playstation.setJenisPs(rs.getString("jenis_ps"));
              playstation.setControllerPs(rs.getString("controller_ps"));
              playstation.setHargaSewa(rs.getDouble("harga_sewa"));
              listPlaystation.add(playstation);
@@ -62,7 +62,7 @@ public class PlaystationServiceImpl implements PlaystationService{
         String query = "INSERT INTO playstation (ID_ps, jenis_ps, controller_ps, harga_sewa) "
                 + "VALUES"
                 + "("+object.getIdPs()
-                +",'"+object.getJensisPs()
+                +",'"+object.getJenisPs()
                 +",'"+object.getControllerPs()
                 +",'"+object.getHargaSewa()
                 +"')";
@@ -82,34 +82,68 @@ public class PlaystationServiceImpl implements PlaystationService{
 
     @Override
     public Integer update(Playstation object) {
-//        int result = 0;
-//        
-//        String query = "UPDATE playstation Set nama_customer ="
-//                + " '"+object.getNamaCustomer()
-//                +"','"+object.getAlamat()+"'"
-//                + "WHERE ID_customer = "+object.getId()+"";
-//        conMan = new ConnectionManager();
-//        conn = conMan.connect();
-//        
-//        try {
-//            stmt = conn.createStatement();
-//           result = stmt.executeUpdate(query);
-//            conMan.dc();
-//        } catch (SQLException e) {
-//            Logger.getLogger(CustomerServiceImpl.class.getName()).
-//                    log(Level.SEVERE, null,e);
-//        }
-//        return result;
+        int result = 0;
+        
+        String query = "UPDATE playstation Set jenis_ps ="
+                + " '"+object.getJenisPs()
+                +"', controller_ps='"+object.getControllerPs()+
+                "', harga_sewa=" +object.getHargaSewa()+""
+                + "WHERE ID_customer = "+object.getIdPs()+"";
+        conMan = new ConnectionManager();
+        conn = conMan.connect();
+        
+        try {
+            stmt = conn.createStatement();
+           result = stmt.executeUpdate(query);
+            conMan.dc();
+        } catch (SQLException e) {
+            Logger.getLogger(CustomerServiceImpl.class.getName()).
+                    log(Level.SEVERE, null,e);
+        }
+        return result;
     }
 
     @Override
     public Playstation findById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    Playstation playstation = null;
+        String query = "SELECT * FROM playstation WHERE ID_ps = " +id+"";
+        conMan = new ConnectionManager();
+        conn = conMan.connect();
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            while (rs.next()){
+                
+                playstation = new Playstation();
+                playstation.setIdPs(rs.getInt("ID_ps"));
+                playstation.setJenisPs(rs.getString("jenis_ps"));
+                playstation.setControllerPs(rs.getString("controller_ps"));
+                playstation.setHargaSewa(rs.getDouble("harga_sewa"));
+            }
+            conMan.dc();
+        } catch (SQLException e) {
+            Logger.getLogger(PlaystationService.class.getName()).
+                    log(Level.SEVERE, null, e);
+        }
+        return playstation;
+    
     }
 
     @Override
     public Integer delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    int result = 0;
+        String query = "DELETE playstation WHERE ID_ps = "+id+"";
+        conMan = new ConnectionManager();
+        conn = conMan.connect();
+        try {
+            stmt = conn.createStatement();
+            result = stmt.executeUpdate(query);
+            conMan.dc();
+        } catch (SQLException e) {
+            Logger.getLogger(CustomerServiceImpl.class.getName()).
+                    log(Level.SEVERE, null, e);
+        }
+        return result;
     }
     
 }

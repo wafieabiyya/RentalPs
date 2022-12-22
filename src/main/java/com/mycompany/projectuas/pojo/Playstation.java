@@ -10,16 +10,16 @@ package com.mycompany.projectuas.pojo;
  */
 public class Playstation {
    private Integer IdPs;
-   private String jensisPs;
+   private String jenisPs;
    private String controllerPs;
    private double hargaSewa;
 
     public Playstation() {
     }
 
-    public Playstation(Integer IdPs, String jensisPs, String controllerPs, double hargaSewa) {
+    public Playstation(Integer IdPs, String jenisPs, String controllerPs, double hargaSewa) {
         this.IdPs = IdPs;
-        this.jensisPs = jensisPs;
+        this.jenisPs = jenisPs;
         this.controllerPs = controllerPs;
         this.hargaSewa = hargaSewa;
     }
@@ -32,12 +32,12 @@ public class Playstation {
         this.IdPs = IdPs;
     }
 
-    public String getJensisPs() {
-        return jensisPs;
+    public String getJenisPs() {
+        return jenisPs;
     }
 
-    public void setJensisPs(String jensisPs) {
-        this.jensisPs = jensisPs;
+    public void setJenisPs(String jenisPs) {
+        this.jenisPs = jenisPs;
     }
 
     public String getControllerPs() {
@@ -55,5 +55,7 @@ public class Playstation {
     public void setHargaSewa(double hargaSewa) {
         this.hargaSewa = hargaSewa;
     }
+
+    
     
   }
