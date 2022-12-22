@@ -78,7 +78,8 @@ public class AdminServiceImpl implements AdminService{
     public Integer update(Admin object) {
         int result = 0;
         
-        String query = "UPDATE Admin Set nama_admin = '"+object.getNamaAdmin()+"', "
+        String query = "UPDATE Admin Set nama_admin = "
+                + "'"+object.getNamaAdmin()+"', "
                 + "WHERE ID_admin = "+object.getID()+"";
         conMan = new ConnectionManager();
         conn = conMan.connect();

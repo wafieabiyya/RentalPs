@@ -12,7 +12,6 @@ public class Customer {
     private int id;
     private String namaCustomer;
     private String alamat;
-    private String statusCustomer;
 
     public Customer() {
     }
@@ -45,14 +44,6 @@ public class Customer {
 
     public void setAlamat(String alamat) {
         this.alamat = alamat;
-    }
-
-    public String getStatusCustomer() {
-        return statusCustomer;
-    }
-
-    public void setStatusCustomer(String statusCustomer) {
-        this.statusCustomer = statusCustomer;
     }
     
     
