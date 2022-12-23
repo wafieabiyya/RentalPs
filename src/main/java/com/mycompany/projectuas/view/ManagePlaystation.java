@@ -16,12 +16,12 @@ import java.util.Scanner;
  * @author lenovo
  */
 public class ManagePlaystation {
-     static List<Playstation> listPlaystation = new ArrayList<>();
+    static List<Playstation> listPlaystation = new ArrayList<>();
     static Playstation playstation;
     static PlaystationService playstationService;
     static Scanner scanner;
     
-    public static void viewManageCustomer(){
+    public static void viewManagePlaystation(){
         int menu = 0;
         boolean keluar = false;
         char pilihan;
@@ -132,8 +132,7 @@ public class ManagePlaystation {
         } while (!keluar);
         System.out.println("Kembali ke menu utama!");
     }
-       
-    
+        
     private static void findAllPlaystation(List<Playstation> listPlaystation) {
         for (Playstation playstation : listPlaystation) {
             System.out.println("-----------------------------------------------------------------");

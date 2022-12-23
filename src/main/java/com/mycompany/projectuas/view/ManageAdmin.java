@@ -54,6 +54,7 @@ public class ManageAdmin {
                         listAdmin = adminService.findAll();
                         FindAllAdmin(listAdmin);
                     }
+                    break;
                 case 2:
                     int updadtedId;
                     Admin updatedAdmin = new Admin();
@@ -105,7 +106,7 @@ public class ManageAdmin {
                     searchedId = sc.nextInt();
                     searchedAdmin = findAdmin(searchedId);
                     if (searchedAdmin != null){
-                         System.out.println("-----------------------------------------------------------------");
+                        System.out.println("-----------------------------------------------------------------");
                         System.out.print("ID Admin \t\t: "+searchedAdmin.getID());
                         System.out.print("Nama Admin \t\t: "+searchedAdmin.getNamaAdmin());
                         System.out.println("-----------------------------------------------------------------");
@@ -123,8 +124,7 @@ public class ManageAdmin {
             choice = sc.next().charAt(0);
             if (choice == 'N'|| choice == 'n'){
                 endSesion = true;
-            }
-            
+            } 
         }
         while (!endSesion);
         System.out.println("Back To Main Menu");
