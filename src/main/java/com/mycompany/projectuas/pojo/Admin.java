@@ -11,14 +11,16 @@ package com.mycompany.projectuas.pojo;
 public class Admin {
     private Integer ID;
     private String namaAdmin;
+    private boolean loginStatus;
     private Akun akun;
 
     public Admin() {
     }
 
-    public Admin(Integer ID, String namaAdmin, Akun akun) {
+    public Admin(Integer ID, String namaAdmin, boolean loginStatus, Akun akun) {
         this.ID = ID;
         this.namaAdmin = namaAdmin;
+        this.loginStatus = loginStatus;
         this.akun = akun;
     }
 
@@ -38,6 +40,14 @@ public class Admin {
         this.namaAdmin = namaAdmin;
     }
 
+    public boolean isLoginStatus() {
+        return loginStatus;
+    }
+
+    public void setLoginStatus(boolean loginStatus) {
+        this.loginStatus = loginStatus;
+    }
+
     public Akun getAkun() {
         return akun;
     }
@@ -45,5 +55,6 @@ public class Admin {
     public void setAkun(Akun akun) {
         this.akun = akun;
     }
-    
+
+ 
 }
