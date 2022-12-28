@@ -10,6 +10,7 @@ package com.mycompany.projectuas.pojo;
  */
 public class Penyewaan {
     private Integer idPenyewaan;
+    String tanggal;
     private int lamaSewa;
     private Customer customer;
     private Game game;
@@ -18,8 +19,9 @@ public class Penyewaan {
     public Penyewaan() {
     }
 
-    public Penyewaan(Integer idPenyewaan, int lamaSewa, Customer customer, Game game, Playstation playstation) {
+    public Penyewaan(Integer idPenyewaan, String tanggal, int lamaSewa, Customer customer, Game game, Playstation playstation) {
         this.idPenyewaan = idPenyewaan;
+        this.tanggal = tanggal;
         this.lamaSewa = lamaSewa;
         this.customer = customer;
         this.game = game;
@@ -32,6 +34,14 @@ public class Penyewaan {
 
     public void setIdPenyewaan(Integer idPenyewaan) {
         this.idPenyewaan = idPenyewaan;
+    }
+
+    public String getTanggal() {
+        return tanggal;
+    }
+
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
     }
 
     public int getLamaSewa() {
@@ -65,5 +75,7 @@ public class Penyewaan {
     public void setPlaystation(Playstation playstation) {
         this.playstation = playstation;
     }
+
+    
 
 }

@@ -97,7 +97,7 @@ public class PlaystationServiceImpl implements PlaystationService{
            result = stmt.executeUpdate(query);
             conMan.dc();
         } catch (SQLException e) {
-            Logger.getLogger(CustomerServiceImpl.class.getName()).
+            Logger.getLogger(PlaystationService.class.getName()).
                     log(Level.SEVERE, null,e);
         }
         return result;

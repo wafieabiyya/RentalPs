@@ -11,13 +11,15 @@ package com.mycompany.projectuas.pojo;
 public class Nota {
     private Integer idNota;
     private Penyewaan penyewaan;
+    private double totalBayar;
 
     public Nota() {
     }
 
-    public Nota(Integer idNota, Penyewaan penyewaan) {
+    public Nota(Integer idNota, Penyewaan penyewaan, double totalBayar) {
         this.idNota = idNota;
         this.penyewaan = penyewaan;
+        this.totalBayar = totalBayar;
     }
 
     public Integer getIdNota() {
@@ -35,5 +37,15 @@ public class Nota {
     public void setPenyewaan(Penyewaan penyewaan) {
         this.penyewaan = penyewaan;
     }
-    
+
+    public double getTotalBayar() {
+        return totalBayar;
+    }
+
+    public void setTotalBayar(double totalBayar) {
+        this.totalBayar = totalBayar;
+    }
+    public void totalBayar(){
+        totalBayar = penyewaan.getLamaSewa()*penyewaan.getPlaystation().getHargaSewa();     
+    }
 }
