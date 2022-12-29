@@ -138,8 +138,8 @@ public class ManagePlaystation {
             System.out.println("-----------------------------------------------------------------");
             System.out.println("ID PS\t\t: " + playstation.getIdPs());
             System.out.println("Jenis PS\t: " + playstation.getJenisPs());
-            System.out.println("Controller PS\t\t: " + playstation.getControllerPs());
-            System.out.println("Harga Sewa\t\t: " + playstation.getHargaSewa());
+            System.out.println("Controller PS\t: " + playstation.getControllerPs());
+            System.out.println("Harga Sewa\t: " + playstation.getHargaSewa());
             System.out.println("-----------------------------------------------------------------");
             System.out.println("");
         }
@@ -151,11 +151,11 @@ public class ManagePlaystation {
         String jenisPlaystation, controllerPlaystation;
         double hargaSewa;
         
-        System.out.println("Jenis Playstation: ");
+        System.out.print("Jenis Playstation: ");
         jenisPlaystation = scanner.nextLine();
-        System.out.println("Controller Playstation: ");
+        System.out.print("Controller Playstation: ");
         controllerPlaystation = scanner.nextLine();
-        System.out.println("Harga Sewa: ");
+        System.out.print("Harga Sewa: ");
         hargaSewa = scanner.nextDouble();
         
         playstation.setJenisPs(jenisPlaystation);

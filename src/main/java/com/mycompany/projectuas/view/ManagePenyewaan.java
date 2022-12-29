@@ -127,13 +127,13 @@ public class ManagePenyewaan {
                     searchedPenyewaan = findPenyewaan(searchedId);
                     if (searchedPenyewaan != null) {
                         System.out.println("-----------------------------------------------------------------");
-                        System.out.println("ID\t\t\t: " + searchedPenyewaan.getIdPenyewaan());
+                        System.out.println("ID\t\t: " + searchedPenyewaan.getIdPenyewaan());
                         System.out.println("Tanggal Penyewaan\t: " + searchedPenyewaan.getTanggal());
                         System.out.println("Lama Sewa\t\t\t: " + searchedPenyewaan.getLamaSewa());
                         System.out.println("Customer\t\t\t: " + searchedPenyewaan.getCustomer().getNamaCustomer());
                         System.out.println("Game\t\t\t: " + searchedPenyewaan.getGame().getNamaGame());
                         System.out.println("Playstation\t\t\t: " + searchedPenyewaan.getPlaystation().getJenisPs());
-                        System.out.println("Playstation\t\t\t: " + searchedPenyewaan.getPlaystation().getHargaSewa());
+                        System.out.println("Harga Sewa\t\t\t: " + searchedPenyewaan.getPlaystation().getHargaSewa());
                         System.out.println("-----------------------------------------------------------------");
                     } else {
                         System.out.println("Data tidak ditemukan!");
@@ -156,10 +156,13 @@ public class ManagePenyewaan {
    private static void findAllPenyewaan (List<Penyewaan> listPenyewaan){
        for (Penyewaan penyewaan : listPenyewaan){
             System.out.println("-----------------------------------------------------------------");
-            System.out.println("ID\t\t\t: " + penyewaan.getIdPenyewaan());
-            System.out.println("Customer\t\t\t: " + penyewaan.getCustomer().getNamaCustomer());
+            System.out.println("ID\t\t: " + penyewaan.getIdPenyewaan());
+            System.out.println("Tanggal Penyewaan\t: "+penyewaan.getTanggal());
+            System.out.println("Customer\t: " + penyewaan.getCustomer().getNamaCustomer());
             System.out.println("Lama Sewa\t: " + penyewaan.getLamaSewa());
-            System.out.println("Playstation\t\t\t: " + penyewaan.getPlaystation().getJenisPs());
+            System.out.println("Playstation\t: " + penyewaan.getPlaystation().getJenisPs());
+            System.out.println("Harga Sewa\t: "+penyewaan.getPlaystation().getHargaSewa());
+                    
             System.out.println("-----------------------------------------------------------------");
             System.out.println("");    
        }

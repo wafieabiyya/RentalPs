@@ -137,7 +137,7 @@ public class ManageCustomer {
             System.out.println("-----------------------------------------------------------------");
             System.out.println("ID Customer\t: " + customer.getId());
             System.out.println("Nama Customer\t: " + customer.getNamaCustomer());
-            System.out.println("Alamat Customer\t\t: " + customer.getAlamat());
+            System.out.println("Alamat Customer\t: " + customer.getAlamat());
             System.out.println("-----------------------------------------------------------------");
             System.out.println("");
         }

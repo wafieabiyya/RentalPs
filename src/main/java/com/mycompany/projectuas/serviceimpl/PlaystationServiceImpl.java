@@ -63,9 +63,9 @@ public class PlaystationServiceImpl implements PlaystationService{
                 + "VALUES"
                 + "("+object.getIdPs()
                 +",'"+object.getJenisPs()
-                +",'"+object.getControllerPs()
-                +",'"+object.getHargaSewa()
-                +"')";
+                +"','"+object.getControllerPs()
+                +"',"+object.getHargaSewa()
+                +")";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {

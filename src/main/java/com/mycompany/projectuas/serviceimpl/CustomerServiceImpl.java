@@ -60,7 +60,7 @@ public class CustomerServiceImpl implements CustomerService{
                 + "VALUES"
                 + "("+object.getId()
                 +",'"+object.getNamaCustomer()
-                +",'"+object.getNamaCustomer()+"')";
+                +"','"+object.getAlamat()+"')";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {

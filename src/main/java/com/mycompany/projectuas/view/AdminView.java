@@ -22,7 +22,7 @@ public class AdminView {
             System.out.println("+--------------------------------------");
             System.out.println("|ADMIN DASHBOARD");
             System.out.println("+--------------------------------------");
-            System.out.println("Selamat datang: " + admin.getAkun().getUsername());
+//            System.out.println("Selamat datang: " + admin.getAkun().getUsername());
             System.out.println("[1] Manage Customer");
             System.out.println("[2] Manage Game");
             System.out.println("[3] Manage Playstation");

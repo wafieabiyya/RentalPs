@@ -36,7 +36,7 @@ public class LoginForm extends javax.swing.JFrame {
         LoginPage = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txt_userName = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -150,9 +150,14 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(230, 170, 110, 20);
 
-        jTextField2.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(220, 170, 210, 22);
+        txt_userName.setFont(new java.awt.Font("SansSerif", 2, 12)); // NOI18N
+        txt_userName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_userNameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_userName);
+        txt_userName.setBounds(220, 170, 210, 22);
 
         jLabel8.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,7 +191,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(220, 260, 110, 21);
+        jRadioButton1.setBounds(220, 260, 110, 20);
 
         jButton1.setBackground(new java.awt.Color(55, 64, 69));
         jButton1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -218,6 +223,10 @@ public class LoginForm extends javax.swing.JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void txt_userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_userNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_userNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,6 +284,6 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txt_userName;
     // End of variables declaration//GEN-END:variables
 }

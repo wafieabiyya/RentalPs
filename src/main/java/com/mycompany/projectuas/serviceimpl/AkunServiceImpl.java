@@ -33,8 +33,8 @@ public class AkunServiceImpl implements AkunService{
        String query = "SELECT adm.ID_admin, adm.nama_admin,"
                + "ak.ID_akun, ak.email, ak.username, ak.password "
                + "FROM admin adm, akun ak "
-               + "WHERE adm.ID_admin = ak.ID_akun"
-               + "AND ak.username = '"+username+"'"
+               + "WHERE adm.ID_admin = ak.ID_akun "
+               + "AND ak.username = '"+username+"' "
                + "AND ak.password = '"+password+"'";
        
        conMan = new ConnectionManager();

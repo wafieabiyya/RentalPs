@@ -3,18 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.projectuas.viewSwing;
+import com.mycompany.projectuas.pojo.Admin;
+import com.mycompany.projectuas.service.AdminService;
+import com.mycompany.projectuas.serviceimpl.AdminServiceImpl;
+
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
  * @author user
  */
 public class RegisterForm extends javax.swing.JFrame {
-
-    /**
-     * Creates new form LoginForm
-     */
+    AdminService adminService = new AdminServiceImpl();
+    String username, password, email;
+    boolean login = false;
+    
     public RegisterForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
     }
 
     /**

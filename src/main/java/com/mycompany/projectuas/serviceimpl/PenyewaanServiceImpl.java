@@ -45,12 +45,12 @@ public class PenyewaanServiceImpl implements PenyewaanService{
         String query = 
                 "SELECT pw.ID_penyewaan, pw.lama_sewa,"
                 + "cs.ID_customer, cs.nama_customer, cs.alamat_customer,"
-                + "ps.ID_ps, ps.jenis_ps, ps.controller_ps, ps.harga_sewa"
-                + "gm.ID_game, gm.nama_game,"
-                + "admin.ID_admin, admin.nama_admin FROM penyewaan pw, customer cs,"
-                + "playstation ps, game gm, admin adm,"
-                + "WHERE pw.ID_customer = cs.ID_customer "
-                + "AND pw.ID_ps = ps.ID_ps AND pw.ID_game = gm.ID_game";
+                + "ps.ID_ps, ps.jenis_ps, ps.controller_ps, ps.harga_sewa, "
+                + "gm.ID_game, gm.nama_game, "
+                + "adm.ID_admin, adm.nama_admin FROM penyewaan pw, customer cs, "
+                + "playstation ps, game gm, admin adm "
+                + "WHERE pw.ID_customer=cs.ID_customer "
+                + "AND pw.ID_ps=ps.ID_ps AND pw.ID_game=gm.ID_game";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();
