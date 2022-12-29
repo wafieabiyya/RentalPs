@@ -4,7 +4,9 @@
  */
 package com.mycompany.projectuas.serviceimpl;
 
+import com.mycompany.projectuas.pojo.Customer;
 import com.mycompany.projectuas.pojo.Game;
+import com.mycompany.projectuas.service.CustomerService;
 import com.mycompany.projectuas.service.GameService;
 import com.mycompany.projectuas.utilities.ConnectionManager;
 import java.sql.ResultSet;
@@ -77,9 +79,9 @@ public class GameServiceImpl implements GameService{
     public Integer update(Game object) {
         int result = 0;
         
-        String query = "UPDATE Game Set nama_game = '"
-                +object.getNamaGame()+"', "
-                + "WHERE ID_game = "
+        String query = "UPDATE Game Set nama_game='"
+                +object.getNamaGame()+"'"
+                + "WHERE ID_game="
                 +object.getID()+"";
         conMan = new ConnectionManager();
         conn = conMan.connect();
@@ -98,15 +100,20 @@ public class GameServiceImpl implements GameService{
     @Override
     public Game findById(int id) {
         Game game = null;
-        String query = "SELECT *FROM Game WHERE ID_game = "+id+"";
+        String query = "SELECT *FROM Game WHERE ID_game="+id+"";
         conMan = new ConnectionManager();
         conn = conMan.connect();
-        try {
-           stm = conn.createStatement();
-           rs = stm.executeQuery(query);
-           conn = conMan.dc();
-        } catch (Exception e) {
-            Logger.getLogger(GameService.class.getName()).
+       try {
+            stm = conn.createStatement();
+            rs = stm.executeQuery(query);
+            while (rs.next()){
+                game = new Game();
+                game.setID(rs.getInt("ID_game"));
+                game.setNamaGame(rs.getString("nama_game"));
+            }
+            conMan.dc();
+        } catch (SQLException e) {
+            Logger.getLogger(CustomerService.class.getName()).
                     log(Level.SEVERE, null, e);
         }
         return game;
@@ -115,7 +122,7 @@ public class GameServiceImpl implements GameService{
     @Override
     public Integer delete(int id) {
         int result = 0;
-        String query = "DELTE Game WHERE ID_game = "+id+"";
+        String query = "DELETE from Game WHERE ID_game="+id+"";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {

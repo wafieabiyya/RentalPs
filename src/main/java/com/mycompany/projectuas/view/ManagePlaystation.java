@@ -57,10 +57,10 @@ public class ManagePlaystation {
                 case 2:
                     int updatedId;
                     Playstation updatedPlaystation = new Playstation();
-                    System.out.println("Masukkan ID Customert: ");
+                    System.out.println("Masukkan ID Playstation: ");
                     updatedId = scanner.nextInt();
                     updatedPlaystation = findPlaystation(updatedId);
-                    System.out.println("Data obat yang akan diupdate: ");
+                    System.out.println("Data Playstation yang akan diupdate: ");
                     if (updatedPlaystation != null) {
                         System.out.println("ID Playstation: " + updatedPlaystation.getIdPs());
                         System.out.println("Jenis Playstation: " + updatedPlaystation.getJenisPs());
@@ -71,7 +71,7 @@ public class ManagePlaystation {
                     }
                     System.out.println("");
                     System.out.println("Masukkan data baru: ");
-                    editCustomer(updatedPlaystation.getIdPs());
+                    editPlaystation(updatedPlaystation.getIdPs());
                 break;
                 case 3:
                     int deletedId;
@@ -79,7 +79,7 @@ public class ManagePlaystation {
                     char confirmation;
                     playstationService = new PlaystationServiceImpl();
                     
-                    System.out.println("Masukkan ID Customer: ");
+                    System.out.println("Masukkan ID Playstation: ");
                     deletedId = scanner.nextInt();
                     deletedPlaystation = findPlaystation(deletedId);
                     System.out.println("Apakah Anda yakin untuk menghapus? y/n: ");
@@ -103,7 +103,7 @@ public class ManagePlaystation {
                 case 5:
                     int searchedId;
                     Playstation searchedPlaystation = new Playstation();
-                    System.out.println("Masukkan ID Obat: ");
+                    System.out.println("Masukkan ID Playstation: ");
                     searchedId = scanner.nextInt();
                     searchedPlaystation = findPlaystation(searchedId);
                     if (searchedPlaystation != null) {
@@ -175,7 +175,7 @@ public class ManagePlaystation {
         return playstation;
     }
 
-    private static void editCustomer(Integer id) {
+    private static void editPlaystation(Integer id) {
         scanner = new Scanner(System.in);
         playstationService = new PlaystationServiceImpl();
         playstation = new Playstation();
@@ -189,6 +189,7 @@ public class ManagePlaystation {
         System.out.println("Harga Sewa: ");
         hargaSewa = scanner.nextDouble();
         
+        playstation.setIdPs(id);
         playstation.setJenisPs(jenisPlaystation);
         playstation.setControllerPs(controllerPlaystation);
         playstation.setHargaSewa(hargaSewa);

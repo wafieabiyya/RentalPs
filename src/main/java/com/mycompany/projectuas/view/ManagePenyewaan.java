@@ -170,10 +170,12 @@ public class ManagePenyewaan {
    private static void insertPenyewaan (Penyewaan penyewaan){
        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
        
+       sc = new Scanner(System.in);
        penyewaanService = new PenyewaanServiceImpl();
        CustomerService customerService = new CustomerServiceImpl();
        GameService gameService = new GameServiceImpl();
        PlaystationService playstationService = new PlaystationServiceImpl();
+       
        
        
        List<Customer> listCustomer = customerService.findAll();
@@ -189,7 +191,7 @@ public class ManagePenyewaan {
            id_playstation;
       
        System.out.println("Tanggal[dd-MM-yyyy]");
-       tanggal = sc.next();
+       tanggal = sc.nextLine();
        LocalDate localDate = LocalDate.parse(tanggal, formatter);
        String tanggalPenyewaan = localDate.toString();
        
@@ -234,6 +236,8 @@ public class ManagePenyewaan {
        Playstation playstation = new Playstation();
        playstation.setIdPs(id_playstation);
        
+       penyewaan.setIdPenyewaan(id_playstation);
+       penyewaan.setTanggal(tanggalPenyewaan);
        penyewaan.setCustomer(customer);
        penyewaan.setGame(game);
        penyewaan.setPlaystation(playstation);

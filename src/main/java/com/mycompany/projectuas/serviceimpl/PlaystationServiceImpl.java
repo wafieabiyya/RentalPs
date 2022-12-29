@@ -84,11 +84,15 @@ public class PlaystationServiceImpl implements PlaystationService{
     public Integer update(Playstation object) {
         int result = 0;
         
-        String query = "UPDATE playstation Set jenis_ps ="
-                + " '"+object.getJenisPs()
+        String query = "UPDATE playstation Set jenis_ps='"+object.getJenisPs()+"',"
+                      + " controller_ps='"+object.getControllerPs()+"',"
+                      + " harga_sewa="+object.getHargaSewa()+""
+                      + " WHERE ID_ps="+object.getIdPs()+"";
+        /*String query = "UPDATE playstation Set jenis_ps='"
+                + "',"+object.getJenisPs()
                 +"', controller_ps='"+object.getControllerPs()+
-                "', harga_sewa=" +object.getHargaSewa()+""
-                + "WHERE ID_customer = "+object.getIdPs()+"";
+                "', harga_sewa=" +object.getHargaSewa()+" "
+           + "WHERE ID_customer="+object.getIdPs()+"";  */    
         conMan = new ConnectionManager();
         conn = conMan.connect();
         
@@ -106,7 +110,7 @@ public class PlaystationServiceImpl implements PlaystationService{
     @Override
     public Playstation findById(int id) {
     Playstation playstation = null;
-        String query = "SELECT * FROM playstation WHERE ID_ps = " +id+"";
+        String query = "SELECT * FROM playstation WHERE ID_ps=" +id+"";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {
@@ -132,7 +136,7 @@ public class PlaystationServiceImpl implements PlaystationService{
     @Override
     public Integer delete(int id) {
     int result = 0;
-        String query = "DELETE playstation WHERE ID_ps = "+id+"";
+        String query = "DELETE from playstation WHERE ID_ps="+id+"";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {

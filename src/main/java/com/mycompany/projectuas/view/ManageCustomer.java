@@ -46,7 +46,7 @@ public class ManageCustomer {
                     char tampil;
                     customer = new Customer();
                     insertCustomer(customer); 
-                    System.out.println("Apakah ingin menampilkan data? y/Y: ");
+                    System.out.println("Apakah ingin menampilkan data? y/n: ");
                     tampil = scanner.next().charAt(0);
                     if (tampil == 'y' || tampil == 'Y') {
                         customerService = new CustomerServiceImpl();
@@ -57,10 +57,10 @@ public class ManageCustomer {
                 case 2:
                     int updatedId;
                     Customer updatedCustomer = new Customer();
-                    System.out.println("Masukkan ID Customert: ");
+                    System.out.println("Masukkan ID Customer: ");
                     updatedId = scanner.nextInt();
                     updatedCustomer = findCustomer(updatedId);
-                    System.out.println("Data obat yang akan diupdate: ");
+                    System.out.println("Data Customer yang akan diupdate: ");
                     if (updatedCustomer != null) {
                         System.out.println("ID Customer: " + updatedCustomer.getId());
                         System.out.println("Nama Customer: " + updatedCustomer.getNamaCustomer());
@@ -102,7 +102,7 @@ public class ManageCustomer {
                 case 5:
                     int searchedId;
                     Customer searchedCustomer = new Customer();
-                    System.out.println("Masukkan ID Obat: ");
+                    System.out.println("Masukkan ID Customer: ");
                     searchedId = scanner.nextInt();
                     searchedCustomer = findCustomer(searchedId);
                     if (searchedCustomer != null) {
@@ -179,7 +179,8 @@ public class ManageCustomer {
         namaCustomer = scanner.nextLine();
         System.out.println("Alamat Customer: ");
         alamatCustomer = scanner.nextLine();
-      
+        
+        customer.setId(id);
         customer.setNamaCustomer(namaCustomer);
         customer.setAlamat(alamatCustomer);
         

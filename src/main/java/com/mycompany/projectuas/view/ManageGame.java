@@ -104,8 +104,8 @@ public class ManageGame {
                      searchedGame = findgame(searchedId);
                      if (searchedGame != null){
                          System.out.println("-----------------------------------------------------------------");
-                        System.out.print("ID Game \t\t: "+searchedGame.getID());
-                        System.out.print("Nama Game \t\t: "+searchedGame.getNamaGame());
+                        System.out.println("ID Game \t\t: "+searchedGame.getID());
+                        System.out.println("Nama Game \t\t: "+searchedGame.getNamaGame());
                         System.out.println("-----------------------------------------------------------------");
                      }
                      else{
@@ -136,11 +136,16 @@ public class ManageGame {
         }
     }
     public static void insertGame (Game game){
-        gameService = new GameServiceImpl();
-        String namaGame;
+        
+       sc = new Scanner(System.in);
+       
+       gameService = new GameServiceImpl();
+       game = new Game();
+    
+       String namaGame;
         
         System.out.print("Nama Game: ");
-        namaGame = sc.next();
+        namaGame = sc.nextLine();
         
         game.setNamaGame(namaGame);
         gameService.create(game);
@@ -148,19 +153,23 @@ public class ManageGame {
         System.out.println("");
     }
     public static Game  findgame (int updatedId){
-       game = new Game();
+        
+      
        gameService = new GameServiceImpl();
        game = gameService.findById(updatedId);
        return game;
     }
     public static void editgame (Integer Game){
+        sc = new Scanner(System.in);
+        
+        game = new Game();
         gameService = new GameServiceImpl();
-        game= new Game();
         String namaGame;
         
         System.out.print("Nama Game: ");
-        namaGame= sc.next();
+        namaGame= sc.nextLine();
         
+        game.setID(Game);
         game.setNamaGame(namaGame);
         gameService.update(game);
         System.out.println("Game Edited!");

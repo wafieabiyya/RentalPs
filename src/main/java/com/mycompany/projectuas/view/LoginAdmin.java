@@ -32,7 +32,7 @@ public class LoginAdmin {
             System.out.println("+-------------------------------------------+");
             System.out.println();
             akunService = (AkunService) akunService.login(username, password);
-      if ( admin!= null){
+      if ( admin != null){
           login = true;
           admin.setLoginStatus(true);
           System.out.println("Login Sucessfull");

@@ -124,11 +124,11 @@ public class PenyewaanServiceImpl implements PenyewaanService{
     @Override
     public Integer update(Penyewaan object) {
        int result = 0;
-       String query = "UPDATE penyewaan SET lama_sewa = "+object.getLamaSewa()+","
-               + "ID_game = "+object.getGame().getID()+", "
-               + "ID_ps = "+object.getPlaystation().getIdPs()+", "
-               + "ID_customer = "+object.getCustomer().getId()+" "
-               + "WHERE ID_penyewaan = "+object.getIdPenyewaan()+"";
+       String query = "UPDATE penyewaan SET lama_sewa="+object.getLamaSewa()+","
+               + "ID_game="+object.getGame().getID()+", "
+               + "ID_ps="+object.getPlaystation().getIdPs()+", "
+               + "ID_customer="+object.getCustomer().getId()+" "
+               + "WHERE ID_penyewaan="+object.getIdPenyewaan()+"";
        conMan = new ConnectionManager();
        conn = conMan.connect();
         try {
@@ -153,14 +153,14 @@ public class PenyewaanServiceImpl implements PenyewaanService{
             
         String query ="SELECT pw.ID_penyewaan, pw.lama_sewa,"
                 + "cs.ID_customer, cs.nama_customer, cs.alamat_customer,"
-                + "ps.ID_ps, ps.jenis_ps, ps.controller_ps, ps.harga_sewa"
+                + "ps.ID_ps, ps.jenis_ps, ps.controller_ps, ps.harga_sewa,"
                 + "gm.ID_game, gm.nama_game,"
-                + "admin.ID_admin, admin.nama_admin FROM penyewaan pw, customer cs,"
-                + "playstation ps, game gm, admin adm,"
-                + "WHERE pw.ID_customer = cs.ID_customer "
-                + "AND pw.ID_ps = ps.ID_ps "
-                + "AND pw.ID_game = gm.ID_game"
-                + "AND pw.ID_penyewaan = "+id+"";;
+                + "adm.ID_admin, adm.nama_admin FROM penyewaan pw, customer cs,"
+                + "playstation ps, game gm, admin adm "
+                + "WHERE pw.ID_customer=cs.ID_customer "
+                + "AND pw.ID_ps=ps.ID_ps "
+                + "AND pw.ID_game=gm.ID_game "
+                + "AND pw.ID_penyewaan="+id+"";
         
         conMan = new ConnectionManager();
         conn = conMan.connect();

@@ -40,6 +40,7 @@ public class CustomerServiceImpl implements CustomerService{
              Customer customer = new Customer();
              customer.setId(rs.getInt("ID_customer"));
              customer.setNamaCustomer(rs.getString("nama_customer"));
+             customer.setAlamat(rs.getString("alamat_customer"));
              
              listCustomer.add(customer);
          }
@@ -125,7 +126,7 @@ public class CustomerServiceImpl implements CustomerService{
     public Integer delete(int id) {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     int result = 0;
-        String query = "DELETE customer WHERE ID_customer = "+id+"";
+        String query = "DELETE from customer WHERE ID_customer="+id+"";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {

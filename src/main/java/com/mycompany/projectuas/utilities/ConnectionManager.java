@@ -24,7 +24,7 @@ public class ConnectionManager {
 
     public ConnectionManager() {
         this.username = "root";
-        this.password = "";
+        this.password = "basdat2022";
         
     }
 
