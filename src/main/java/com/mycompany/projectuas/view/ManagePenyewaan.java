@@ -55,19 +55,89 @@ public class ManagePenyewaan {
             menu = sc.nextInt();
             switch (menu) {
                 case 1:
-                    
+                    char tampil;
+                    penyewaan = new Penyewaan();
+                    insertPenyewaan(penyewaan); 
+                    System.out.println("Apakah ingin menampilkan data? y/Y: ");
+                    tampil = sc.next().charAt(0);
+                    if (tampil == 'y' || tampil == 'Y') {
+                        penyewaanService = new PenyewaanServiceImpl();
+                        listPenyewaan = penyewaanService.findAll();
+                        findAllPenyewaan(listPenyewaan);
+                    }
                     break;
                 case 2:
-                    
+                    int updatedId;
+                    Penyewaan updatedPenyewaan = new Penyewaan();
+                    System.out.println("Masukkan ID Pendaftaran: ");
+                    updatedId = sc.nextInt();
+                    updatedPenyewaan = findPenyewaan(updatedId);
+                    System.out.println("Data jadwal yang akan diupdate: ");
+                    if (updatedPenyewaan != null) {
+                        System.out.println("-----------------------------------------------------------------");
+                        System.out.println("ID\t\t\t: " + updatedPenyewaan.getIdPenyewaan());
+                        System.out.println("Tanggal Penyewaan\t: " + updatedPenyewaan.getTanggal());
+                        System.out.println("Lama Sewa\t\t\t: " + updatedPenyewaan.getLamaSewa());
+                        System.out.println("Customer\t\t\t: " + updatedPenyewaan.getCustomer().getNamaCustomer());
+                        System.out.println("Game\t\t\t: " + updatedPenyewaan.getGame().getNamaGame());
+                        System.out.println("Playstation\t\t\t: " + updatedPenyewaan.getPlaystation().getJenisPs());
+                        System.out.println("Playstation\t\t\t: " + updatedPenyewaan.getPlaystation().getHargaSewa());
+                        System.out.println("-----------------------------------------------------------------");
+                    } else {
+                        System.out.println("Data tidak ditemukan!");
+                    }
+                    System.out.println("");
+                    System.out.println("Masukkan data baru: ");
+                    editPenyewaan(updatedPenyewaan.getIdPenyewaan());
+
                     break;
                 case 3:
+                    int deletedId;
+                    Penyewaan deletedPenyewaan = new Penyewaan();
+                    char confirmation;
+                    penyewaanService = new PenyewaanServiceImpl();
                     
+                    System.out.println("Masukkan ID Penyewaan: ");
+                    deletedId = sc.nextInt();
+                    deletedPenyewaan = findPenyewaan(deletedId);
+                    System.out.println("Apakah Anda yakin untuk menghapus? y/n: ");
+                    confirmation = sc.next().charAt(0);
+                    
+                    if (confirmation == 'y' || confirmation == 'Y') {
+                        if (deletedPenyewaan != null) {
+                            penyewaanService.delete(deletedId);
+                            System.out.println("Data berhasil dihapus...!");
+                            System.out.println("");
+                        } else {
+                            System.out.println("Data tidak ditemukan!");
+                        }
+                    }
                     break;
                 case 4:
-                    
+                    penyewaanService = new PenyewaanServiceImpl();
+                    listPenyewaan = penyewaanService.findAll();
+                    findAllPenyewaan(listPenyewaan);
                     break;
                 case 5:
-                    
+                    int searchedId;
+                    String subStrJamMulai, subStrJamAkhir;
+                    Penyewaan searchedPenyewaan = new Penyewaan();
+                    System.out.println("Masukkan ID Penyewaan: ");
+                    searchedId = sc.nextInt();
+                    searchedPenyewaan = findPenyewaan(searchedId);
+                    if (searchedPenyewaan != null) {
+                        System.out.println("-----------------------------------------------------------------");
+                        System.out.println("ID\t\t\t: " + searchedPenyewaan.getIdPenyewaan());
+                        System.out.println("Tanggal Penyewaan\t: " + searchedPenyewaan.getTanggal());
+                        System.out.println("Lama Sewa\t\t\t: " + searchedPenyewaan.getLamaSewa());
+                        System.out.println("Customer\t\t\t: " + searchedPenyewaan.getCustomer().getNamaCustomer());
+                        System.out.println("Game\t\t\t: " + searchedPenyewaan.getGame().getNamaGame());
+                        System.out.println("Playstation\t\t\t: " + searchedPenyewaan.getPlaystation().getJenisPs());
+                        System.out.println("Playstation\t\t\t: " + searchedPenyewaan.getPlaystation().getHargaSewa());
+                        System.out.println("-----------------------------------------------------------------");
+                    } else {
+                        System.out.println("Data tidak ditemukan!");
+                    }
                     break;
                     
                 default:

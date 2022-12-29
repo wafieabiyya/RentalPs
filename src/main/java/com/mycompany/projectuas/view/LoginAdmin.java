@@ -37,7 +37,7 @@ public class LoginAdmin {
           admin.setLoginStatus(true);
           System.out.println("Login Sucessfull");
           System.out.println("");
-//          AdminView.menuAdmin(admin); ini harus bikin dulu di adminView
+          AdminView.menuAdmin(admin);
         }
       else {
           System.out.println("Wrong Password Or Username, Please Try Agin...");
