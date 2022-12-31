@@ -5,6 +5,7 @@
 package com.mycompany.projectuas.serviceimpl;
 
 import com.mycompany.projectuas.pojo.Admin;
+import com.mycompany.projectuas.pojo.Akun;
 import com.mycompany.projectuas.service.AdminService;
 import com.mycompany.projectuas.utilities.ConnectionManager;
 import java.sql.Connection;
@@ -28,6 +29,7 @@ public class AdminServiceImpl implements AdminService{
     
     @Override
     public List<Admin> findAll() {
+        
         List<Admin> listAdmin = new ArrayList<>();
         String query = "SELECT *FROM Admin";
         
@@ -48,8 +50,7 @@ public class AdminServiceImpl implements AdminService{
         catch (SQLException e) {
             Logger.getLogger(ConnectionManager.class.getName()).
                     log(Level.SEVERE, null,e);
-        }
-        
+        }  
       return listAdmin;
     }
 
@@ -76,7 +77,7 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public Integer update(Admin object) {
-        int result = 0;
+         int result = 0;
         
         String query = "UPDATE Admin Set nama_admin = "
                 + "'"+object.getNamaAdmin()+"', "
@@ -134,5 +135,4 @@ public class AdminServiceImpl implements AdminService{
         }
         return result;
     }
-    
 }

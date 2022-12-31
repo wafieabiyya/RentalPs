@@ -92,7 +92,7 @@ public class DashboardManageGame extends javax.swing.JFrame {
         jButton2.setBounds(10, 200, 170, 40);
 
         jButton3.setBackground(new java.awt.Color(214, 228, 229));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGE_IMPORT/teenyicons_game-controller-retro-outline.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectUas\\src\\main\\java\\IMAGE_IMPORT\\teenyicons_game-controller-retro-outline.png")); // NOI18N
         jButton3.setText("Manage Game");
         jButton3.setBorderPainted(false);
         jButton3.setHideActionText(true);

@@ -15,6 +15,7 @@ public class DashboardManagePlaystation extends javax.swing.JFrame {
      */
     public DashboardManagePlaystation() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -29,13 +30,13 @@ public class DashboardManagePlaystation extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -73,28 +74,26 @@ public class DashboardManagePlaystation extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(239, 245, 245));
         jPanel2.setLayout(null);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGE_IMPORT/ion_game-controller-outline.png"))); // NOI18N
-        jLabel7.setText("GAMERY");
-        jLabel7.setIconTextGap(8);
-        jPanel2.add(jLabel7);
-        jLabel7.setBounds(30, 30, 120, 30);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGE_IMPORT/ri_home-5-line.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\ri_home-5-line.png")); // NOI18N
         jButton1.setText("Home");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.setIconTextGap(6);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
         jButton1.setBounds(10, 100, 170, 40);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGE_IMPORT/eos-icons_admin-outlined.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\eos-icons_admin-outlined.png")); // NOI18N
         jButton2.setText("Manage Admin");
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton2.setIconTextGap(6);
         jPanel2.add(jButton2);
         jButton2.setBounds(10, 200, 170, 40);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGE_IMPORT/teenyicons_game-controller-retro-outline.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\teenyicons_game-controller-retro-outline.png")); // NOI18N
         jButton3.setText("Manage Game");
         jButton3.setHideActionText(true);
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -107,7 +106,7 @@ public class DashboardManagePlaystation extends javax.swing.JFrame {
         jPanel2.add(jButton3);
         jButton3.setBounds(10, 150, 170, 40);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGE_IMPORT/mdi_people-group-outline.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\mdi_people-group-outline.png")); // NOI18N
         jButton4.setText("Manage Customer");
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.setIconTextGap(6);
@@ -115,7 +114,7 @@ public class DashboardManagePlaystation extends javax.swing.JFrame {
         jButton4.setBounds(10, 250, 170, 40);
 
         jButton5.setBackground(new java.awt.Color(214, 228, 229));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGE_IMPORT/iconoir_playstation-gamepad_1.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\iconoir_playstation-gamepad_1.png")); // NOI18N
         jButton5.setText("Manage Playstation");
         jButton5.setBorderPainted(false);
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -124,12 +123,17 @@ public class DashboardManagePlaystation extends javax.swing.JFrame {
         jButton5.setBounds(10, 300, 170, 40);
 
         jButton13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGE_IMPORT/simple-line-icons_logout.png"))); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\simple-line-icons_logout.png")); // NOI18N
         jButton13.setText("Logout");
         jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton13.setIconTextGap(8);
         jPanel2.add(jButton13);
         jButton13.setBounds(20, 570, 110, 40);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\ion_game-controller-outline.png")); // NOI18N
+        jLabel10.setText("GAMERY");
+        jPanel2.add(jLabel10);
+        jLabel10.setBounds(20, 50, 100, 30);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 0, 200, 630);
@@ -306,6 +310,10 @@ public class DashboardManagePlaystation extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -365,12 +373,12 @@ public class DashboardManagePlaystation extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

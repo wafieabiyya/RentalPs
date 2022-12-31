@@ -13,15 +13,9 @@ public class Akun {
     private String email;
     private String username;
     private String password;
+    
 
     public Akun() {
-    }
-
-    public Akun(Integer ID, String email, String username, String password) {
-        this.ID = ID;
-        this.email = email;
-        this.username = username;
-        this.password = password;
     }
 
     public Integer getID() {
@@ -55,6 +49,4 @@ public class Akun {
     public void setPassword(String password) {
         this.password = password;
     }
-
-       
-}
+   }

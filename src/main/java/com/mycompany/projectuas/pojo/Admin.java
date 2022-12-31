@@ -17,13 +17,6 @@ public class Admin {
     public Admin() {
     }
 
-    public Admin(Integer ID, String namaAdmin, boolean loginStatus, Akun akun) {
-        this.ID = ID;
-        this.namaAdmin = namaAdmin;
-        this.loginStatus = loginStatus;
-        this.akun = akun;
-    }
-
     public Integer getID() {
         return ID;
     }
@@ -55,6 +48,4 @@ public class Admin {
     public void setAkun(Akun akun) {
         this.akun = akun;
     }
-
- 
 }

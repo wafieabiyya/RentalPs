@@ -42,7 +42,7 @@ public class ManagePenyewaan {
         char choice;
         do {      
             System.out.println("+--------------------------------------");
-            System.out.println("|ADMIN DASHBOARD | PENDAFTARAN POLI");
+            System.out.println("|ADMIN DASHBOARD | PENYEWAAN PS");
             System.out.println("+--------------------------------------");
             System.out.println("1. Create Penyewaan");
             System.out.println("2. Update Penyewaan");
@@ -69,19 +69,19 @@ public class ManagePenyewaan {
                 case 2:
                     int updatedId;
                     Penyewaan updatedPenyewaan = new Penyewaan();
-                    System.out.println("Masukkan ID Pendaftaran: ");
+                    System.out.println("Masukkan ID Penyewaan: ");
                     updatedId = sc.nextInt();
                     updatedPenyewaan = findPenyewaan(updatedId);
-                    System.out.println("Data jadwal yang akan diupdate: ");
+                    System.out.println("Data Penyewaan yang akan diupdate: ");
                     if (updatedPenyewaan != null) {
                         System.out.println("-----------------------------------------------------------------");
                         System.out.println("ID\t\t\t: " + updatedPenyewaan.getIdPenyewaan());
                         System.out.println("Tanggal Penyewaan\t: " + updatedPenyewaan.getTanggal());
-                        System.out.println("Lama Sewa\t\t\t: " + updatedPenyewaan.getLamaSewa());
-                        System.out.println("Customer\t\t\t: " + updatedPenyewaan.getCustomer().getNamaCustomer());
-                        System.out.println("Game\t\t\t: " + updatedPenyewaan.getGame().getNamaGame());
-                        System.out.println("Playstation\t\t\t: " + updatedPenyewaan.getPlaystation().getJenisPs());
-                        System.out.println("Playstation\t\t\t: " + updatedPenyewaan.getPlaystation().getHargaSewa());
+                        System.out.println("Lama Sewa\t\t: " + updatedPenyewaan.getLamaSewa());
+                        System.out.println("Customer\t\t: " + updatedPenyewaan.getCustomer().getNamaCustomer());
+                        System.out.println("Game\t\t: " + updatedPenyewaan.getGame().getNamaGame());
+                        System.out.println("Playstation\t\t: " + updatedPenyewaan.getPlaystation().getJenisPs());
+                        System.out.println("Harga Sewa\t\t: " + updatedPenyewaan.getPlaystation().getHargaSewa());
                         System.out.println("-----------------------------------------------------------------");
                     } else {
                         System.out.println("Data tidak ditemukan!");
@@ -141,7 +141,7 @@ public class ManagePenyewaan {
                     break;
                     
                 default:
-                    throw new AssertionError();
+                    break;
             }
             System.out.println("");
             System.out.print("Apakah anda ingin melanjutkan? Y/N: ");
@@ -156,13 +156,12 @@ public class ManagePenyewaan {
    private static void findAllPenyewaan (List<Penyewaan> listPenyewaan){
        for (Penyewaan penyewaan : listPenyewaan){
             System.out.println("-----------------------------------------------------------------");
-            System.out.println("ID\t\t: " + penyewaan.getIdPenyewaan());
+            System.out.println("ID\t\t\t: " + penyewaan.getIdPenyewaan());
             System.out.println("Tanggal Penyewaan\t: "+penyewaan.getTanggal());
-            System.out.println("Customer\t: " + penyewaan.getCustomer().getNamaCustomer());
-            System.out.println("Lama Sewa\t: " + penyewaan.getLamaSewa());
-            System.out.println("Playstation\t: " + penyewaan.getPlaystation().getJenisPs());
-            System.out.println("Harga Sewa\t: "+penyewaan.getPlaystation().getHargaSewa());
-                    
+            System.out.println("Customer\t\t: " + penyewaan.getCustomer().getNamaCustomer());
+            System.out.println("Lama Sewa\t\t: " + penyewaan.getLamaSewa());
+            System.out.println("Playstation\t\t: " + penyewaan.getPlaystation().getJenisPs());
+            System.out.println("Harga Sewa\t\t: "+penyewaan.getPlaystation().getHargaSewa());                 
             System.out.println("-----------------------------------------------------------------");
             System.out.println("");    
        }
@@ -176,13 +175,10 @@ public class ManagePenyewaan {
        GameService gameService = new GameServiceImpl();
        PlaystationService playstationService = new PlaystationServiceImpl();
        
-       
-       
        List<Customer> listCustomer = customerService.findAll();
        List<Game> listGame = gameService.findAll();
        List<Playstation> listPlaystation = playstationService.findAll();
       
-       
        String tanggal;
        
        int lama_sewa,
@@ -208,7 +204,7 @@ public class ManagePenyewaan {
        
        System.out.println("Daftar Game: ");
        for(Game game : listGame){
-           System.out.println("["+game.getID()+"]"+"-"+game.getNamaGame());
+           System.out.println("["+game.getID()+"]"+" - "+game.getNamaGame());
        }
        System.out.print("Pilih Id Game: ");
        id_game = sc.nextInt();
@@ -217,8 +213,8 @@ public class ManagePenyewaan {
        System.out.println("Daftar Playstation:");
        for(Playstation playstation : listPlaystation){
            System.out.println("["+playstation.getIdPs()+"]"
-                   +"-"+playstation.getJenisPs()
-                   +"-"+playstation.getHargaSewa());
+                   +" - "+playstation.getJenisPs()
+                   +" - "+playstation.getHargaSewa());
        }
        System.out.print("Pilih Id Playstaion: ");
        id_playstation = sc.nextInt();

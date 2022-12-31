@@ -4,6 +4,8 @@
  */
 package com.mycompany.projectuas.view;
 
+import static com.mycompany.projectuas.view.ManageAdmin.admin;
+//import static com.mycompany.projectuas.view.RegisterAdmin.akun;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -28,42 +30,45 @@ public class LoginPage {
             System.out.println("|GAMERY PLAYSTATION");
             System.out.println("+--------------------------------------");
             System.out.println("Selamat datang, silakan melakukan login terlebih dahulu");
-            System.out.println("[1] Login Admin");
-            System.out.println("[2] Exit");
+            System.out.println("[1] Register Admin");
+            System.out.println("[2] Login Admin");
+            System.out.println("[3] Exit");
             System.out.println("---------------------------------------");
             System.out.println("");
-            System.out.println("Masukkan pilihan menu: ");
+            System.out.print("Masukkan pilihan menu: ");
             scanner = new Scanner(System.in);
             
             try {
                 menu = scanner.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Pilihan harus dalam Angka: " +e);
+                System.out.println("Pilihan harus dalam Angka");
             }
             
             switch (menu) {
                 case 1:
-                    LoginAdmin.login();
+                    ManageAdmin.ViewManageAdmin();
+                    ;
                 break;
                 case 2:
+                   LoginAdmin.login();
+                break;
+                case 3:
                     System.out.println("Keluar aplikasi...!");
                     System.exit(0);
-                break;
+                    break;
                 default:
                     System.out.println("Pilihan yang Anda masukkan salah!");
                 break;
             }
             System.out.println("");
-            System.out.println("Apakah ingin melanjutkan? [y/n]: ");
+            System.out.print("Apakah ingin melanjutkan? y/n: ");
             scanner = new Scanner(System.in);
             pilihan = scanner.next().charAt(0);
             if (pilihan == 'n' || pilihan == 'N') {
                 keluar = true;
-            }
-            
+            }    
         } while (!keluar);
         System.out.println("Terima kasih sudah menggunakan aplikasi.");
         System.exit(0);
     }
 }
-

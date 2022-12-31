@@ -11,6 +11,6 @@ import com.mycompany.projectuas.repository.RepositoryAkun;
  *
  * @author lenovo
  */
-public interface AkunService extends RepositoryAkun<Admin, Integer>{
+public interface AkunService extends RepositoryAkun<Admin, Object>{
     
 }

@@ -38,7 +38,7 @@ public class ManageCustomer {
             System.out.println("5. Find Customer by ID");
             System.out.println("+--------------------------------------");
             System.out.println("");
-            System.out.println("Masukkan pilihan menu: ");
+            System.out.print("Masukkan pilihan menu: ");
             scanner = new Scanner(System.in);
             menu = scanner.nextInt();
             switch (menu) {
@@ -78,16 +78,16 @@ public class ManageCustomer {
                     char confirmation;
                     customerService = new CustomerServiceImpl();
                     
-                    System.out.println("Masukkan ID Customer: ");
+                    System.out.print("Masukkan ID Customer: ");
                     deletedId = scanner.nextInt();
                     deletedCustomer = findCustomer(deletedId);
-                    System.out.println("Apakah Anda yakin untuk menghapus? y/n: ");
+                    System.out.print("Apakah Anda yakin untuk menghapus? y/n: ");
                     confirmation = scanner.next().charAt(0);
                     
                     if (confirmation == 'y' || confirmation == 'Y') {
                         if (deletedCustomer != null) {
                             customerService.delete(deletedId);
-                            System.out.println("Data berhasil dihapus...!");
+                            System.out.println("Data berhasil dihapus!");
                             System.out.println("");
                         } else {
                             System.out.println("Data tidak ditemukan!");
@@ -102,14 +102,14 @@ public class ManageCustomer {
                 case 5:
                     int searchedId;
                     Customer searchedCustomer = new Customer();
-                    System.out.println("Masukkan ID Customer: ");
+                    System.out.print("Masukkan ID Customer: ");
                     searchedId = scanner.nextInt();
                     searchedCustomer = findCustomer(searchedId);
                     if (searchedCustomer != null) {
                         System.out.println("-----------------------------------------------------------------");
-                        System.out.println("ID Customer\t\t: " + searchedCustomer.getId());
+                        System.out.println("ID Customer\t: " + searchedCustomer.getId());
                         System.out.println("Nama Customer\t: " + searchedCustomer.getNamaCustomer());
-                        System.out.println("Alamat customer\t\t: " + searchedCustomer.getNamaCustomer());
+                        System.out.println("Alamat customer\t: " + searchedCustomer.getAlamat());
                         System.out.println("-----------------------------------------------------------------");
                     } else {
                         System.out.println("Data tidak ditemukan!");
@@ -120,7 +120,7 @@ public class ManageCustomer {
                 break;
             }
             System.out.println("");
-            System.out.println("Apakah ingin melanjutkan? y/n: ");
+            System.out.print("Apakah ingin melanjutkan? y/n: ");
             scanner = new Scanner(System.in);
             pilihan = scanner.next().charAt(0);
             if (pilihan == 'n' || pilihan == 'N') {

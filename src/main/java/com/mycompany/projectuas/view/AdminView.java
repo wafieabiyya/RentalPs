@@ -22,7 +22,7 @@ public class AdminView {
             System.out.println("+--------------------------------------");
             System.out.println("|ADMIN DASHBOARD");
             System.out.println("+--------------------------------------");
-//            System.out.println("Selamat datang: " + admin.getAkun().getUsername());
+            System.out.println("Selamat datang: " + admin.getAkun().getUsername());
             System.out.println("[1] Manage Customer");
             System.out.println("[2] Manage Game");
             System.out.println("[3] Manage Playstation");
@@ -30,7 +30,7 @@ public class AdminView {
             System.out.println("[5] Logout");
             System.out.println("---------------------------------------");
             System.out.println("");
-            System.out.println("Masukkan pilihan menu: ");
+            System.out.print("Masukkan pilihan menu: ");
             scanner = new Scanner(System.in);
             menu = scanner.nextInt();
             
@@ -50,7 +50,7 @@ public class AdminView {
                 case 5:
                     System.out.println("");
                     
-                    System.out.println("Apakah ingin logout? [y/n]: ");
+                    System.out.print("Apakah ingin logout? Y/N: ");
                     scanner = new Scanner(System.in);
                     pilihan = scanner.next().charAt(0);
                     if (pilihan == 'y' || pilihan == 'Y') {
@@ -67,5 +67,4 @@ public class AdminView {
         System.out.println("Terima kasih sudah menggunakan aplikasi.");
         System.exit(0);
     }
-
 }
