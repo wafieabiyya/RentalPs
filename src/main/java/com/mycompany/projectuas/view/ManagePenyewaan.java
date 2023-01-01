@@ -16,7 +16,6 @@ import com.mycompany.projectuas.serviceimpl.CustomerServiceImpl;
 import com.mycompany.projectuas.serviceimpl.PenyewaanServiceImpl;
 import com.mycompany.projectuas.serviceimpl.GameServiceImpl;
 import com.mycompany.projectuas.serviceimpl.PlaystationServiceImpl;
-import static com.mycompany.projectuas.view.ManageCustomer.customerService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -32,8 +31,6 @@ public class ManagePenyewaan {
     static List<Penyewaan> listPenyewaan = new ArrayList<>();
     static Penyewaan penyewaan;
     static PenyewaanService penyewaanService;
-    static Playstation playstation;
-    static Game gameService;
     static Scanner sc = new Scanner (System.in);
     
     public static void viewManagePenyewaan(){
@@ -42,7 +39,7 @@ public class ManagePenyewaan {
         char choice;
         do {      
             System.out.println("+--------------------------------------");
-            System.out.println("|ADMIN DASHBOARD | PENDAFTARAN POLI");
+            System.out.println("|ADMIN DASHBOARD | PENYEWAAN PLAYSTATION");
             System.out.println("+--------------------------------------");
             System.out.println("1. Create Penyewaan");
             System.out.println("2. Update Penyewaan");
@@ -58,7 +55,7 @@ public class ManagePenyewaan {
                     char tampil;
                     penyewaan = new Penyewaan();
                     insertPenyewaan(penyewaan); 
-                    System.out.println("Apakah ingin menampilkan data? y/Y: ");
+                    System.out.println("Apakah ingin menampilkan data? y/n: ");
                     tampil = sc.next().charAt(0);
                     if (tampil == 'y' || tampil == 'Y') {
                         penyewaanService = new PenyewaanServiceImpl();
@@ -120,7 +117,6 @@ public class ManagePenyewaan {
                     break;
                 case 5:
                     int searchedId;
-                    String subStrJamMulai, subStrJamAkhir;
                     Penyewaan searchedPenyewaan = new Penyewaan();
                     System.out.println("Masukkan ID Penyewaan: ");
                     searchedId = sc.nextInt();
@@ -237,7 +233,6 @@ public class ManagePenyewaan {
        playstation.setIdPs(id_playstation);
        
        penyewaan.setIdPenyewaan(id_playstation);
-       penyewaan.setTanggal(tanggalPenyewaan);
        penyewaan.setCustomer(customer);
        penyewaan.setGame(game);
        penyewaan.setPlaystation(playstation);

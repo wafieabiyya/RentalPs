@@ -10,7 +10,7 @@ package com.mycompany.projectuas.pojo;
  */
 public class Penyewaan {
     private Integer idPenyewaan;
-    String tanggal;
+    private String tanggal;
     private int lamaSewa;
     private Customer customer;
     private Game game;
@@ -75,7 +75,4 @@ public class Penyewaan {
     public void setPlaystation(Playstation playstation) {
         this.playstation = playstation;
     }
-
-    
-
 }

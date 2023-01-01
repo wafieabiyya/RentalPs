@@ -43,7 +43,7 @@ public class PenyewaanServiceImpl implements PenyewaanService{
         Admin admin = null;
         
         String query = 
-                "SELECT pw.ID_penyewaan, pw.lama_sewa,"
+                "SELECT pw.ID_penyewaan, pw.lama_sewa, pw.tanggal_sewa,"
                 + "cs.ID_customer, cs.nama_customer, cs.alamat_customer,"
                 + "ps.ID_ps, ps.jenis_ps, ps.controller_ps, ps.harga_sewa, "
                 + "gm.ID_game, gm.nama_game, "
@@ -62,6 +62,7 @@ public class PenyewaanServiceImpl implements PenyewaanService{
                 penyewaan = new Penyewaan();
                 penyewaan.setIdPenyewaan(rs.getInt("ID_penyewaan"));
                 penyewaan.setLamaSewa(rs.getInt("lama_sewa"));
+                penyewaan.setTanggal(rs.getString("tanggal_sewa"));
                 
                 customer = new Customer();
                 customer.setId(rs.getInt("ID_customer"));
@@ -77,10 +78,6 @@ public class PenyewaanServiceImpl implements PenyewaanService{
                 game = new Game();
                 game.setID(rs.getInt("ID_game"));
                 game.setNamaGame(rs.getString("nama_game"));
-                
-                admin = new Admin();
-                admin.setID(rs.getInt("ID_admin"));
-                admin.setNamaAdmin(rs.getString("nama_admin"));
                 
                 penyewaan.setCustomer(customer);
                 penyewaan.setGame(game);
@@ -101,10 +98,11 @@ public class PenyewaanServiceImpl implements PenyewaanService{
     @Override
     public Integer create(Penyewaan object) {
       int result = 0;
-      String query = "INSERT INTO penyewaan(lama_sewa, ID_game, ID_ps,"
-              + " ID_customer) VALUES"
-              + "("+object.getLamaSewa()+","
-              + ""+object.getGame().getID()+","
+      String query = "INSERT INTO penyewaan(tanggal_sewa, lama_sewa, ID_game, ID_ps,"
+              + " ID_customer) VALUES "
+              + "('"+object.getTanggal()+"', "
+              + ""+object.getLamaSewa()+", "
+              + ""+object.getGame().getID()+", "
               + ""+object.getPlaystation().getIdPs()+","
               + ""+object.getCustomer().getId()+")";
       conMan = new ConnectionManager();
@@ -124,7 +122,8 @@ public class PenyewaanServiceImpl implements PenyewaanService{
     @Override
     public Integer update(Penyewaan object) {
        int result = 0;
-       String query = "UPDATE penyewaan SET lama_sewa="+object.getLamaSewa()+","
+       String query = "UPDATE penyewaan SET tanggal_sewa='"+object.getTanggal()+"', "
+               + "lama_sewa="+object.getLamaSewa()+", "
                + "ID_game="+object.getGame().getID()+", "
                + "ID_ps="+object.getPlaystation().getIdPs()+", "
                + "ID_customer="+object.getCustomer().getId()+" "
@@ -151,7 +150,7 @@ public class PenyewaanServiceImpl implements PenyewaanService{
         Customer customer = null;
         Admin admin = null;
             
-        String query ="SELECT pw.ID_penyewaan, pw.lama_sewa,"
+        String query ="SELECT pw.ID_penyewaan, pw.lama_sewa, pw.tanggal_sewa,"
                 + "cs.ID_customer, cs.nama_customer, cs.alamat_customer,"
                 + "ps.ID_ps, ps.jenis_ps, ps.controller_ps, ps.harga_sewa,"
                 + "gm.ID_game, gm.nama_game,"
@@ -172,27 +171,26 @@ public class PenyewaanServiceImpl implements PenyewaanService{
                 penyewaan = new Penyewaan();
                 penyewaan.setIdPenyewaan(rs.getInt("ID_penyewaan"));
                 penyewaan.setLamaSewa(rs.getInt("lama_sewa"));
+                penyewaan.setTanggal(rs.getString("tanggal_sewa"));
                 
                 customer = new Customer();
-                customer.setId(rs.getInt("ID_customer"));
+//                customer.setId(rs.getInt("ID_customer"));
                 customer.setNamaCustomer(rs.getString("nama_customer"));
-                customer.setAlamat(rs.getString("alamat_customer"));
+//                customer.setAlamat(rs.getString("alamat_customer"));
                 
                 playstation = new Playstation();
-                playstation.setIdPs(rs.getInt("ID_ps"));
+//                playstation.setIdPs(rs.getInt("ID_ps"));
                 playstation.setJenisPs(rs.getString("jenis_ps"));
-                playstation.setControllerPs(rs.getString("controller_ps"));
+//                playstation.setControllerPs(rs.getString("controller_ps"));
                 playstation.setHargaSewa(rs.getDouble("harga_sewa"));
                 
                 game = new Game();
-                game.setID(rs.getInt("ID_game"));
+//                game.setID(rs.getInt("ID_game"));
                 game.setNamaGame(rs.getString("nama_game"));
                 
-                admin = new Admin();
-                admin.setID(rs.getInt("ID_admin"));
-                admin.setNamaAdmin(rs.getString("nama_admin"));
-                
                 penyewaan.setCustomer(customer);
+                penyewaan.setGame(game);
+                penyewaan.setPlaystation(playstation);
                 
             }
         } catch (SQLException e) {

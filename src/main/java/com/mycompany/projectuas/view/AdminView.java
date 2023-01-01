@@ -27,7 +27,8 @@ public class AdminView {
             System.out.println("[2] Manage Game");
             System.out.println("[3] Manage Playstation");
             System.out.println("[4] Penyewaan Playstation");
-            System.out.println("[5] Logout");
+            System.out.println("[5] Manage Nota");
+            System.out.println("[6] Logout");
             System.out.println("---------------------------------------");
             System.out.println("");
             System.out.println("Masukkan pilihan menu: ");
@@ -48,6 +49,9 @@ public class AdminView {
                     ManagePenyewaan.viewManagePenyewaan();
                 break;
                 case 5:
+                    ManageNota.viewManageNota();
+                break;
+                case 6:
                     System.out.println("");
                     
                     System.out.println("Apakah ingin logout? [y/n]: ");
