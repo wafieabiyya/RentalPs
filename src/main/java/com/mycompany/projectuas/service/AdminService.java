@@ -5,12 +5,12 @@
 package com.mycompany.projectuas.service;
 
 import com.mycompany.projectuas.pojo.Admin;
-import com.mycompany.projectuas.repository.RepositoryCrud;
+import com.mycompany.projectuas.repository.RepositoryAkun;
 
 /**
  *
  * @author lenovo
  */
-public interface AdminService extends RepositoryCrud<Admin, Integer> {
+public interface AdminService extends RepositoryAkun<Admin, Integer> {
     
 }

@@ -17,6 +17,8 @@ import com.mycompany.projectuas.serviceimpl.PenyewaanServiceImpl;
 import com.mycompany.projectuas.serviceimpl.GameServiceImpl;
 import com.mycompany.projectuas.serviceimpl.PlaystationServiceImpl;
 import static com.mycompany.projectuas.view.ManageCustomer.customerService;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -120,7 +122,6 @@ public class ManagePenyewaan {
                     break;
                 case 5:
                     int searchedId;
-                    String subStrJamMulai, subStrJamAkhir;
                     Penyewaan searchedPenyewaan = new Penyewaan();
                     System.out.println("Masukkan ID Penyewaan: ");
                     searchedId = sc.nextInt();
@@ -186,9 +187,10 @@ public class ManagePenyewaan {
            id_game, 
            id_playstation;
       
-       System.out.println("Tanggal[dd-MM-yyyy]");
+       System.out.print("Tanggal: ");
        tanggal = sc.nextLine();
-       LocalDate localDate = LocalDate.parse(tanggal, formatter);
+       Date date = new Date();
+       LocalDate localDate = LocalDate.parse(tanggal,formatter);
        String tanggalPenyewaan = localDate.toString();
        
        System.out.print("Lama Sewa: ");
@@ -233,7 +235,6 @@ public class ManagePenyewaan {
        playstation.setIdPs(id_playstation);
        
        penyewaan.setIdPenyewaan(id_playstation);
-       penyewaan.setTanggal(tanggalPenyewaan);
        penyewaan.setCustomer(customer);
        penyewaan.setGame(game);
        penyewaan.setPlaystation(playstation);

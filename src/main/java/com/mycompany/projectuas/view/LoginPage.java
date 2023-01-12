@@ -4,8 +4,7 @@
  */
 package com.mycompany.projectuas.view;
 
-import static com.mycompany.projectuas.view.ManageAdmin.admin;
-//import static com.mycompany.projectuas.view.RegisterAdmin.akun;
+//import static com.mycompany.projectuas.view.ManageAdmin.admin;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -46,11 +45,12 @@ public class LoginPage {
             
             switch (menu) {
                 case 1:
-                    ManageAdmin.ViewManageAdmin();
+                    //ManageAdmin.ViewManageAdmin();
+                    //RegisterAdmin.Register();
                     ;
                 break;
                 case 2:
-                   LoginAdmin.login();
+                   //LoginAdmin.login();
                 break;
                 case 3:
                     System.out.println("Keluar aplikasi...!");

@@ -4,9 +4,11 @@
  */
 package com.mycompany.projectuas.viewSwing;
 
+import com.mycompany.projectuas.serviceimpl.AdminServiceImpl;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.net.ssl.SSLEngineResult;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +19,10 @@ public class RegisterPage extends javax.swing.JFrame {
     /**
      * Creates new form testing
      */
+    AdminServiceImpl log = new AdminServiceImpl();
+    String namaAdmin,email,username,password;
+    boolean login = false;
+    
     public RegisterPage() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -98,6 +104,11 @@ public class RegisterPage extends javax.swing.JFrame {
         jLabel9.setText("Password");
 
         btn_signUp.setText("SIgn Up");
+        btn_signUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_signUpActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("Must be at least 5 characters");
@@ -237,6 +248,25 @@ public class RegisterPage extends javax.swing.JFrame {
         loginPage.setVisible(true);
         close();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signUpActionPerformed
+        log.Register(
+                txt_nama.getText(), 
+                txt_email.getText(), 
+                txt_username.getText(),
+                txt_password.getText());
+        if(true){
+            JOptionPane.showMessageDialog(null, "Account Created","Pesan",JOptionPane.INFORMATION_MESSAGE);
+            LoginPage loginPage = new LoginPage();
+            loginPage.setVisible(true);
+            close();
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Failed", "pesan",JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_btn_signUpActionPerformed
 
     /**
      * @param args the command line arguments

@@ -122,14 +122,14 @@ public class GameServiceImpl implements GameService{
     @Override
     public Integer delete(int id) {
         int result = 0;
-        String query = "DELETE from Game WHERE ID_game="+id+"";
+        String query ="DELETE FROM Game WHERE ID_game="+id+"";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {
             stm = conn.createStatement();
             result = stm.executeUpdate(query);
             
-            conn = conMan.dc();
+            conMan.dc();
         } catch (Exception e) {
             Logger.getLogger(GameService.class.getName()).
                     log(Level.SEVERE, null, e);

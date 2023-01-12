@@ -4,16 +4,12 @@
  */
 package com.mycompany.projectuas.serviceimpl;
 
-import com.mycompany.projectuas.pojo.Admin;
-import com.mycompany.projectuas.pojo.Akun;
 import com.mycompany.projectuas.service.AdminService;
 import com.mycompany.projectuas.utilities.ConnectionManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,113 +22,49 @@ public class AdminServiceImpl implements AdminService{
     private Connection conn;
     Statement stmt;
     ResultSet rs;
-    
+
     @Override
-    public List<Admin> findAll() {
-        
-        List<Admin> listAdmin = new ArrayList<>();
-        String query = "SELECT *FROM Admin";
-        
+    public int login(String username, String password) {
+        int login = 0;
         conMan = new ConnectionManager();
         conn = conMan.connect();
+        String query = "SELECT *FROM admin WHERE username='"+username+"'"
+                + " AND password='"+password+"'";
         try {
-         stmt = conn.createStatement();
-         rs = stmt.executeQuery(query);
-         while (rs.next()){
-             Admin admin = new Admin();
-             admin.setID(rs.getInt("ID_admin"));
-             admin.setNamaAdmin(rs.getString("nama_admin"));
-             
-             listAdmin.add(admin);
-         }
-         conMan.dc();
-        } 
-        catch (SQLException e) {
-            Logger.getLogger(ConnectionManager.class.getName()).
-                    log(Level.SEVERE, null,e);
-        }  
-      return listAdmin;
+           stmt = conn.createStatement();
+           rs = stmt.executeQuery(query);
+           while(rs.next()){
+               if(username.equals(rs.getString("username"))&& password.equals(rs.getString("password"))){
+                  login = 1; 
+               }
+               else{
+                   login =0;
+               }
+           }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        return login;
     }
 
     @Override
-    public Integer create(Admin object) {
-        int result = 0;
-        String query = "INSERT INTO Admin (ID_admin, nama_admin) "
-                + "VALUES"
-                + "("+object.getID()
-                +",'"+object.getNamaAdmin()+"')";
+    public boolean Register(String namaAdmin, String email, String username, String password) {
         conMan = new ConnectionManager();
         conn = conMan.connect();
+        String query = "INSERT INTO Admin Values"
+                    + "('"+namaAdmin+"'"
+                    + ",'"+email+"'"
+                    + ",'"+username+"'"
+                    + ",'"+password+"')";
         try {
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
-            conMan.dc();
-        } 
-        catch (SQLException e) {
-            Logger.getLogger(AdminService.class.getName()).
-                    log(Level.SEVERE, null, e);
-        }
-        return result;
-    }
-
-    @Override
-    public Integer update(Admin object) {
-         int result = 0;
-        
-        String query = "UPDATE Admin Set nama_admin = "
-                + "'"+object.getNamaAdmin()+"', "
-                + "WHERE ID_admin = "+object.getID()+"";
-        conMan = new ConnectionManager();
-        conn = conMan.connect();
-        
-        try {
-            stmt = conn.createStatement();
-           result = stmt.executeUpdate(query);
-            conMan.dc();
+            return true;
         } catch (SQLException e) {
             Logger.getLogger(AdminServiceImpl.class.getName()).
                     log(Level.SEVERE, null,e);
-        }
-        return result;
-    }
-
-    @Override
-    public Admin findById(int id) {
-        Admin admin = null;
-        String query = "SELECT * FROM Admin WHERE ID_admin = " +id+"";
-        conMan = new ConnectionManager();
-        conn = conMan.connect();
-        try {
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-            while (rs.next()){
-                
-                admin = new Admin();
-                admin.setID(rs.getInt("ID_admin"));
-                admin.setNamaAdmin(rs.getString("nama_admin"));
+            return false;
             }
-            conMan.dc();
-        } catch (SQLException e) {
-            Logger.getLogger(AdminService.class.getName()).
-                    log(Level.SEVERE, null, e);
-        }
-        return admin;
+        }           
     }
-
-    @Override
-    public Integer delete(int id) {
-        int result = 0;
-        String query = "DELETE Admin WHERE ID_admin = "+id+"";
-        conMan = new ConnectionManager();
-        conn = conMan.connect();
-        try {
-            stmt = conn.createStatement();
-            result = stmt.executeUpdate(query);
-            conMan.dc();
-        } catch (SQLException e) {
-            Logger.getLogger(AdminServiceImpl.class.getName()).
-                    log(Level.SEVERE, null, e);
-        }
-        return result;
-    }
-}

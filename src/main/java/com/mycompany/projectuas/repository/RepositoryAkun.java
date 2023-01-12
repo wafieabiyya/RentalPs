@@ -9,6 +9,7 @@ package com.mycompany.projectuas.repository;
  * @author lenovo
  */
 public interface RepositoryAkun<T,ID> {
-    T login (String username, String password);
+    int login (String username, String password);
+    boolean Register (String namaAdmin, String email, String username, String password);
     
 }

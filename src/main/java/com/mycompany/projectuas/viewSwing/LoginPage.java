@@ -5,13 +5,12 @@
 package com.mycompany.projectuas.viewSwing;
 
 import com.mycompany.projectuas.pojo.Admin;
-import com.mycompany.projectuas.pojo.Akun;
 import com.mycompany.projectuas.service.AdminService;
-import com.mycompany.projectuas.service.AkunService;
 import com.mycompany.projectuas.serviceimpl.AdminServiceImpl;
-import com.mycompany.projectuas.serviceimpl.AkunServiceImpl;
+import com.mycompany.projectuas.utilities.ConnectionManager;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
 import javax.swing.JOptionPane;
 import javax.tools.Tool;
 
@@ -20,14 +19,14 @@ import javax.tools.Tool;
  * @author lenovo
  */
 public class LoginPage extends javax.swing.JFrame {
-    AkunService akunService = new AkunServiceImpl();
     
-    Admin admin;
+    AdminServiceImpl log = new AdminServiceImpl();
+    ConnectionManager conMan = new ConnectionManager();
+    Connection con = conMan.connect();
     
     String username, password;
     boolean login = false;
-    
-    
+       
     public LoginPage() {
         initComponents(); 
         this.setLocationRelativeTo(null);
@@ -35,6 +34,20 @@ public class LoginPage extends javax.swing.JFrame {
     public void close(){
         WindowEvent we = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(we);
+    }
+    public void clearField (){
+        txt_userName.setText("");
+        txt_password.setText("");
+    }
+    public void showPass (){
+        if(radio_show.isSelected()){
+            txt_password.setEchoChar((char)0);
+            radio_show.setText("Hide Password");
+        }
+        else{
+            txt_password.setEchoChar('*');
+            radio_show.setText("Show Password");
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,9 +65,9 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_signIn = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        radio_show = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_signUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,23 +111,23 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel11.setText("Dont have any account?");
 
-        jRadioButton1.setText("Show Password");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        radio_show.setText("Show Password");
+        radio_show.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                radio_showActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        jButton1.setText("Sign Up");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_signUp.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        btn_signUp.setText("Sign Up");
+        btn_signUp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btn_signUpMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_signUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_signUpActionPerformed(evt);
             }
         });
 
@@ -150,8 +163,8 @@ public class LoginPage extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1))
-                            .addComponent(jRadioButton1))))
+                                .addComponent(btn_signUp))
+                            .addComponent(radio_show))))
                 .addContainerGap(74, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -185,13 +198,13 @@ public class LoginPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(radio_show, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_signIn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jButton1))
+                    .addComponent(btn_signUp))
                 .addContainerGap(162, Short.MAX_VALUE))
         );
 
@@ -213,42 +226,39 @@ public class LoginPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txt_userNameActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void radio_showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_showActionPerformed
         
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_radio_showActionPerformed
 
     private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_passwordActionPerformed
         
     }//GEN-LAST:event_txt_passwordActionPerformed
 
     private void btn_signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signInActionPerformed
-        String username, password;
-        username = txt_userName.getText();
-        password = txt_password.getText();
+        int login = log.login(txt_userName.getText(), txt_password.getText());
+        if (login == 1){
+            JOptionPane.showMessageDialog(null, "Login Berhasil","Pesan",
+                    JOptionPane.INFORMATION_MESSAGE);
         
-        admin = akunService.login(username, password);
-        if (admin != null){
-            login = true;
-            admin.setLoginStatus(true);
-            JOptionPane.showMessageDialog(null, "Login Sucessfull");
-            DashboardHomePage dashboardHomePage = new DashboardHomePage();
-            dashboardHomePage.setVisible(true);
-            close();
+        DashboardHomePage dashboardHomePage = new DashboardHomePage();
+        dashboardHomePage.setVisible(true);
         }
         else {
-            JOptionPane.showMessageDialog(null, "Username atau Password anda salah");
+            JOptionPane.showMessageDialog(null, "Username and password is wrong", "pesan",
+                    JOptionPane.WARNING_MESSAGE);
+            clearField();
         }
     }//GEN-LAST:event_btn_signInActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signUpActionPerformed
         RegisterPage registerPage = new RegisterPage();
         registerPage.setVisible(true);
         close();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_signUpActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btn_signUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_signUpMouseClicked
         
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btn_signUpMouseClicked
 
     /**
      * @param args the command line arguments
@@ -287,7 +297,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_signIn;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_signUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -298,7 +308,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton radio_show;
     private javax.swing.JPasswordField txt_password;
     private javax.swing.JTextField txt_userName;
     // End of variables declaration//GEN-END:variables
