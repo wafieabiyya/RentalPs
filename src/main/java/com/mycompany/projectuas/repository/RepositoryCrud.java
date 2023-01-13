@@ -14,6 +14,6 @@ public interface RepositoryCrud <T, ID>{
     List <T> findAll();
     ID create(T object);
     ID update(T object);
-    T findById(int id);
-    ID delete(int id);
+    T findById(String id);
+    ID delete(String id);
 }

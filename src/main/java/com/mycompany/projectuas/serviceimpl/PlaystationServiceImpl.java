@@ -40,7 +40,7 @@ public class PlaystationServiceImpl implements PlaystationService{
          rs = stmt.executeQuery(query);
          while (rs.next()){
              Playstation playstation = new Playstation();
-             playstation.setIdPs(rs.getInt("ID_ps"));
+             playstation.setIdPs(rs.getString("ID_ps"));
              playstation.setJenisPs(rs.getString("jenis_ps"));
              playstation.setControllerPs(rs.getString("controller_ps"));
              playstation.setHargaSewa(rs.getDouble("harga_sewa"));
@@ -61,8 +61,8 @@ public class PlaystationServiceImpl implements PlaystationService{
     int result = 0;
         String query = "INSERT INTO playstation (ID_ps, jenis_ps, controller_ps, harga_sewa) "
                 + "VALUES"
-                + "("+object.getIdPs()
-                +",'"+object.getJenisPs()
+                + "('"+object.getIdPs()
+                +"','"+object.getJenisPs()
                 +"','"+object.getControllerPs()
                 +"',"+object.getHargaSewa()
                 +")";
@@ -87,12 +87,7 @@ public class PlaystationServiceImpl implements PlaystationService{
         String query = "UPDATE playstation Set jenis_ps='"+object.getJenisPs()+"',"
                       + " controller_ps='"+object.getControllerPs()+"',"
                       + " harga_sewa="+object.getHargaSewa()+""
-                      + " WHERE ID_ps="+object.getIdPs()+"";
-        /*String query = "UPDATE playstation Set jenis_ps='"
-                + "',"+object.getJenisPs()
-                +"', controller_ps='"+object.getControllerPs()+
-                "', harga_sewa=" +object.getHargaSewa()+" "
-           + "WHERE ID_customer="+object.getIdPs()+"";  */    
+                      + " WHERE ID_ps='"+object.getIdPs()+"'";  
         conMan = new ConnectionManager();
         conn = conMan.connect();
         
@@ -108,9 +103,10 @@ public class PlaystationServiceImpl implements PlaystationService{
     }
 
     @Override
-    public Playstation findById(int id) {
+    public Playstation findById(String id) {
     Playstation playstation = null;
-        String query = "SELECT * FROM playstation WHERE ID_ps=" +id+"";
+    
+        String query = "SELECT * FROM playstation WHERE ID_ps LIKE '%"+id+"%'";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {
@@ -119,7 +115,7 @@ public class PlaystationServiceImpl implements PlaystationService{
             while (rs.next()){
                 
                 playstation = new Playstation();
-                playstation.setIdPs(rs.getInt("ID_ps"));
+                playstation.setIdPs(rs.getString("ID_ps"));
                 playstation.setJenisPs(rs.getString("jenis_ps"));
                 playstation.setControllerPs(rs.getString("controller_ps"));
                 playstation.setHargaSewa(rs.getDouble("harga_sewa"));
@@ -130,13 +126,12 @@ public class PlaystationServiceImpl implements PlaystationService{
                     log(Level.SEVERE, null, e);
         }
         return playstation;
-    
     }
 
     @Override
-    public Integer delete(int id) {
+    public Integer delete(String id) {
     int result = 0;
-        String query = "DELETE from playstation WHERE ID_ps="+id+"";
+        String query = "DELETE from playstation WHERE ID_ps='"+id+"'";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {

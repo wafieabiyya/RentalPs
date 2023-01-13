@@ -40,7 +40,7 @@ public class GameServiceImpl implements GameService{
             rs = stm.executeQuery(query);
             while (rs.next()){
                 Game game = new Game();
-                game.setID(rs.getInt("ID_game"));
+                game.setID(rs.getString("ID_game"));
                 game.setNamaGame(rs.getString("nama_game"));
                 
                 listGame.add(game);
@@ -59,8 +59,8 @@ public class GameServiceImpl implements GameService{
         int result = 0;
         String query = "INSERT INTO Game (ID_game, nama_game) "
                 + "VALUES"
-                + "("+object.getID()
-                +",'"+object.getNamaGame()+"')";
+                + "('"+object.getID()
+                +"','"+object.getNamaGame()+"')";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {
@@ -81,8 +81,8 @@ public class GameServiceImpl implements GameService{
         
         String query = "UPDATE Game Set nama_game='"
                 +object.getNamaGame()+"'"
-                + "WHERE ID_game="
-                +object.getID()+"";
+                + "WHERE ID_game='"
+                +object.getID()+"'";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {
@@ -98,9 +98,9 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public Game findById(int id) {
+    public Game findById(String id) {
         Game game = null;
-        String query = "SELECT *FROM Game WHERE ID_game="+id+"";
+        String query = "SELECT *FROM Game WHERE ID_game LIKE '%"+id+"%'";
         conMan = new ConnectionManager();
         conn = conMan.connect();
        try {
@@ -108,7 +108,7 @@ public class GameServiceImpl implements GameService{
             rs = stm.executeQuery(query);
             while (rs.next()){
                 game = new Game();
-                game.setID(rs.getInt("ID_game"));
+                game.setID(rs.getString("ID_game"));
                 game.setNamaGame(rs.getString("nama_game"));
             }
             conMan.dc();
@@ -120,9 +120,9 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public Integer delete(int id) {
+    public Integer delete(String id) {
         int result = 0;
-        String query ="DELETE FROM Game WHERE ID_game="+id+"";
+        String query ="DELETE FROM Game WHERE ID_game='"+id+"'";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {

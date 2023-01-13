@@ -9,24 +9,26 @@ package com.mycompany.projectuas.pojo;
  * @author lenovo
  */
 public class Customer {
-    private int id;
+    private String id;
     private String namaCustomer;
     private String alamat;
+    private String status;
 
     public Customer() {
     }
 
-    public Customer(int id, String namaCustomer, String alamat) {
+    public Customer(String id, String namaCustomer, String alamat, String status) {
         this.id = id;
         this.namaCustomer = namaCustomer;
         this.alamat = alamat;
+        this.status = status;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -45,6 +47,15 @@ public class Customer {
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
     
     
 }

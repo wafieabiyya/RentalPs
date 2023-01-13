@@ -38,9 +38,10 @@ public class CustomerServiceImpl implements CustomerService{
          rs = stmt.executeQuery(query);
          while (rs.next()){
              Customer customer = new Customer();
-             customer.setId(rs.getInt("ID_customer"));
+             customer.setId(rs.getString("ID_customer"));
              customer.setNamaCustomer(rs.getString("nama_customer"));
              customer.setAlamat(rs.getString("alamat_customer"));
+             customer.setStatus(rs.getString("status_customer"));
              
              listCustomer.add(customer);
          }
@@ -57,11 +58,12 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public Integer create(Customer object) {
         int result = 0;
-        String query = "INSERT INTO customer (ID_customer, nama_customer, alamat_customer) "
+        String query = "INSERT INTO customer (ID_customer, nama_customer, alamat_customer, status_customer) "
                 + "VALUES"
-                + "("+object.getId()
-                +",'"+object.getNamaCustomer()
-                +"','"+object.getAlamat()+"')";
+                + "('"+object.getId()
+                +"','"+object.getNamaCustomer()
+                +"','"+object.getAlamat()
+                +"','"+object.getStatus()+"')";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {
@@ -81,9 +83,10 @@ public class CustomerServiceImpl implements CustomerService{
     int result = 0;
         
         String query = "UPDATE customer Set nama_customer ="
-                + "'"+object.getNamaCustomer()
-                +"', alamat_customer='"+object.getAlamat()+"'"
-                + "WHERE ID_customer = "+object.getId()+"";
+                + "'"+object.getNamaCustomer()+"'"
+                + ",alamat_customer='"+object.getAlamat()+"' "
+                + ",status_customer='"+object.getStatus()+"' "
+                + "WHERE ID_customer = '"+object.getId()+"'";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         
@@ -99,9 +102,9 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public Customer findById(int id) {        
+    public Customer findById(String id) {        
     Customer customer = null;
-        String query = "SELECT * FROM customer WHERE ID_customer = " +id+"";
+        String query = "SELECT * FROM customer WHERE ID_customer LIKE '%"+id+"%'";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {
@@ -110,10 +113,10 @@ public class CustomerServiceImpl implements CustomerService{
             while (rs.next()){
                 
                 customer = new Customer();
-                customer.setId(rs.getInt("ID_customer"));
+                customer.setId(rs.getString("ID_customer"));
                 customer.setNamaCustomer(rs.getString("nama_customer"));
                 customer.setAlamat(rs.getString("alamat_customer"));
-            }
+            }   customer.setStatus(rs.getString("status_customer"));
             conMan.dc();
         } catch (SQLException e) {
             Logger.getLogger(CustomerService.class.getName()).
@@ -123,10 +126,10 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public Integer delete(int id) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Integer delete(String id) {
+        
     int result = 0;
-        String query = "DELETE from customer WHERE ID_customer="+id+"";
+        String query = "DELETE from customer WHERE ID_customer='"+id+"'";
         conMan = new ConnectionManager();
         conn = conMan.connect();
         try {
@@ -139,5 +142,4 @@ public class CustomerServiceImpl implements CustomerService{
         }
         return result;
     }
-
 }

@@ -4,6 +4,14 @@
  */
 package com.mycompany.projectuas.viewSwing;
 
+import com.mycompany.projectuas.pojo.Customer;
+import com.mycompany.projectuas.pojo.Penyewaan;
+import com.mycompany.projectuas.service.PenyewaanService;
+import com.mycompany.projectuas.serviceimpl.PenyewaanServiceImpl;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lenovo
@@ -13,8 +21,46 @@ public class DashboardManagePenyewaanPage extends javax.swing.JFrame {
     /**
      * Creates new form DashboardManagePenyewaanPage
      */
+    PenyewaanService penyewaanService;
+    
     public DashboardManagePenyewaanPage() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        loadData();
+    }
+    
+    private void emptyField(){
+        txt_id.setText("");
+        txt_customer1.setText("");
+        txt_game1.setText("");
+        txt_lamasewa.setText("");
+        txt_ps.setText("");
+        tgl_sewa.setCalendar(null);
+    }
+    
+    public void loadData(){
+        penyewaanService = new PenyewaanServiceImpl();
+        List<Penyewaan> listPenyewaan = new ArrayList<>();
+        listPenyewaan = penyewaanService.findAll();
+        
+        Object [][] objectPenyewaan = new Object[listPenyewaan.size()][6];
+        
+        int counter = 0;
+        for (Penyewaan penyewaan: listPenyewaan){
+            objectPenyewaan [counter][0] = penyewaan.getIdPenyewaan();
+            objectPenyewaan [counter][1] = penyewaan.getCustomer().getNamaCustomer();
+            objectPenyewaan [counter][2] = penyewaan.getGame().getNamaGame();
+            objectPenyewaan [counter][3] = penyewaan.getPlaystation().getJenisPs();
+            objectPenyewaan [counter][4] = penyewaan.getTanggal();
+            objectPenyewaan [counter][5] = penyewaan.getLamaSewa();
+            
+            counter++;
+            
+        }
+        tbl_penyewaan.setModel(new javax.swing.table.DefaultTableModel(
+        objectPenyewaan, new String[]{
+           "ID Penyewaan", "Customer", "Game", "Plastation", "Tanggal Sewa", "Lama_Sewa"
+        }));
     }
 
     /**
@@ -27,84 +73,402 @@ public class DashboardManagePenyewaanPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_penyewaan = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        tgl_sewa = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txt_id = new javax.swing.JTextField();
+        txt_ps = new javax.swing.JTextField();
+        txt_lamasewa = new javax.swing.JTextField();
+        btn_save = new javax.swing.JButton();
+        btn_edit = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
+        btn_clear = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        btn_refresh = new javax.swing.JButton();
+        btn_search = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txt_customer1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txt_game1 = new javax.swing.JTextField();
+        btn_print1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btn_logout = new javax.swing.JButton();
+        btn_home = new javax.swing.JButton();
+        btn_manageGame = new javax.swing.JButton();
+        btn_manageAdmin = new javax.swing.JButton();
+        btn_managePs = new javax.swing.JButton();
+        btn_customer = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_penyewaan.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        tbl_penyewaan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Penyewaan", "Nama Customer", "Nama  Game", "Jenis Playstation", "Tanggal Sewa", "Lama Sewa"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_penyewaan);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 392, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel3.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 340, 790, 230);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel1.setText("Tanggal Sewa  :");
+        jPanel3.add(jLabel1);
+        jLabel1.setBounds(20, 180, 140, 20);
+
+        tgl_sewa.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jPanel3.add(tgl_sewa);
+        tgl_sewa.setBounds(170, 170, 162, 31);
+
+        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel2.setText("Customer      :");
+        jPanel3.add(jLabel2);
+        jLabel2.setBounds(20, 60, 137, 20);
+
+        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel3.setText("Playstation   :");
+        jPanel3.add(jLabel3);
+        jLabel3.setBounds(20, 140, 137, 20);
+
+        jLabel4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel4.setText("Lama Sewa     :");
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(20, 210, 137, 20);
+
+        txt_id.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txt_id.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txt_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txt_id);
+        txt_id.setBounds(170, 20, 162, 31);
+
+        txt_ps.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txt_ps.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel3.add(txt_ps);
+        txt_ps.setBounds(170, 130, 162, 31);
+
+        txt_lamasewa.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txt_lamasewa.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txt_lamasewa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_lamasewaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txt_lamasewa);
+        txt_lamasewa.setBounds(170, 200, 156, 31);
+
+        btn_save.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_save.setText("Save");
+        btn_save.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
+        btn_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_saveActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_save);
+        btn_save.setBounds(510, 30, 123, 48);
+
+        btn_edit.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_edit.setText("Edit");
+        btn_edit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
+        jPanel3.add(btn_edit);
+        btn_edit.setBounds(510, 90, 123, 48);
+
+        btn_delete.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_delete.setText("Delete");
+        btn_delete.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
+        jPanel3.add(btn_delete);
+        btn_delete.setBounds(680, 30, 123, 48);
+
+        btn_clear.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_clear.setText("Clear");
+        btn_clear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
+        jPanel3.add(btn_clear);
+        btn_clear.setBounds(680, 90, 123, 48);
+
+        jLabel8.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel8.setText("LIST PENYEWAAN");
+        jPanel3.add(jLabel8);
+        jLabel8.setBounds(20, 240, 170, 25);
+
+        jTextField1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextField1);
+        jTextField1.setBounds(20, 270, 160, 30);
+
+        btn_refresh.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        btn_refresh.setText("Refresh");
+        btn_refresh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 98)));
+        jPanel3.add(btn_refresh);
+        btn_refresh.setBounds(120, 310, 90, 20);
+
+        btn_search.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        btn_search.setText("Search");
+        btn_search.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(4, 21, 98)));
+        btn_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_searchActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_search);
+        btn_search.setBounds(20, 310, 92, 19);
+
+        jLabel7.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel7.setText("ID Penyewaan :");
+        jPanel3.add(jLabel7);
+        jLabel7.setBounds(30, 20, 137, 20);
+
+        txt_customer1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txt_customer1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        txt_customer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_customer1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txt_customer1);
+        txt_customer1.setBounds(170, 50, 162, 31);
+
+        jLabel9.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel9.setText("Game          :");
+        jPanel3.add(jLabel9);
+        jLabel9.setBounds(20, 100, 137, 20);
+
+        txt_game1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txt_game1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel3.add(txt_game1);
+        txt_game1.setBounds(170, 90, 162, 31);
+
+        btn_print1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_print1.setText("Print");
+        btn_print1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
+        jPanel3.add(btn_print1);
+        btn_print1.setBounds(510, 150, 291, 48);
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(130, 90, 830, 580);
+
+        jLabel5.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel5.setText("Welcome to Manage Penyewaan Page");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(320, 10, 470, 24);
+
+        jLabel11.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jLabel11.setText("This application helps manage the needs of the Playstation rental business easily.");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(210, 40, 730, 20);
+
+        jLabel12.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jLabel12.setText("You can control anytime and anywhere through this application.");
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(300, 60, 560, 20);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 3, new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(null);
+
+        btn_logout.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_logout.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\log-out.png")); // NOI18N
+        btn_logout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_logout.setBorderPainted(false);
+        btn_logout.setContentAreaFilled(false);
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logoutActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_logout);
+        btn_logout.setBounds(30, 600, 50, 45);
+
+        btn_home.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_home.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\house.png")); // NOI18N
+        btn_home.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_home.setBorderPainted(false);
+        btn_home.setContentAreaFilled(false);
+        btn_home.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_homeActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_home);
+        btn_home.setBounds(30, 120, 50, 49);
+
+        btn_manageGame.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_manageGame.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\console.png")); // NOI18N
+        btn_manageGame.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_manageGame.setBorderPainted(false);
+        btn_manageGame.setContentAreaFilled(false);
+        btn_manageGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_manageGameActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_manageGame);
+        btn_manageGame.setBounds(30, 180, 50, 49);
+
+        btn_manageAdmin.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_manageAdmin.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\user.png")); // NOI18N
+        btn_manageAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_manageAdmin.setBorderPainted(false);
+        btn_manageAdmin.setContentAreaFilled(false);
+        jPanel2.add(btn_manageAdmin);
+        btn_manageAdmin.setBounds(30, 240, 50, 49);
+
+        btn_managePs.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_managePs.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\videogame.png")); // NOI18N
+        btn_managePs.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_managePs.setBorderPainted(false);
+        btn_managePs.setContentAreaFilled(false);
+        btn_managePs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_managePsActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_managePs);
+        btn_managePs.setBounds(30, 300, 50, 49);
+
+        btn_customer.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_customer.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\customer.png")); // NOI18N
+        btn_customer.setToolTipText("");
+        btn_customer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_customer.setBorderPainted(false);
+        btn_customer.setContentAreaFilled(false);
+        btn_customer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_customerActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_customer);
+        btn_customer.setBounds(30, 360, 50, 49);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\playstation-logotype.png")); // NOI18N
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(20, 20, 70, 64);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 110, 670);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 972, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idActionPerformed
+
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+        LoginPage loginPage = new LoginPage();
+        loginPage.setVisible(true);
+    }//GEN-LAST:event_btn_logoutActionPerformed
+
+    private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
+        DashboardHomePage dashboardHomePage = new DashboardHomePage();
+        dashboardHomePage.setVisible(true);
+    }//GEN-LAST:event_btn_homeActionPerformed
+
+    private void btn_manageGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manageGameActionPerformed
+        DashBoardManageGamePage dashBoardManageGamePage = new DashBoardManageGamePage();
+        dashBoardManageGamePage.setVisible(true);
+    }//GEN-LAST:event_btn_manageGameActionPerformed
+
+    private void btn_managePsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_managePsActionPerformed
+        DashboardManagePs dashboardManagePs = new DashboardManagePs();
+        dashboardManagePs.setVisible(true);
+    }//GEN-LAST:event_btn_managePsActionPerformed
+
+    private void btn_customerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_customerActionPerformed
+        DashboardManageCustomerPage dashboardManageCustomerPage = new DashboardManageCustomerPage();
+        dashboardManageCustomerPage.setVisible(true);
+    }//GEN-LAST:event_btn_customerActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void txt_lamasewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_lamasewaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_lamasewaActionPerformed
+
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+        // TODO add your handling code here:
+        String id_penyewaan, id_customer, id_game, id_ps, tanggal;
+        int lama_sewa;
+       
+        penyewaanService = new PenyewaanServiceImpl();
+        id_penyewaan = (txt_id.getText());
+        id_customer = txt_customer1.getText();
+        id_game = txt_game1.getText();
+        id_ps = txt_ps.getText();
+        tanggal = tgl_sewa.getDateFormatString();
+        lama_sewa = Integer.parseInt(txt_lamasewa.getText());
+
+        Penyewaan penyewaan = new Penyewaan();
+        penyewaan.setIdPenyewaan(id_penyewaan);
+        penyewaan.getCustomer().setId(id_customer);
+        penyewaan.getGame().setID(id_game);
+        penyewaan.getPlaystation().setIdPs(id_ps);
+        penyewaan.getTanggal();
+        penyewaan.getLamaSewa();
+
+        penyewaanService.create(penyewaan);
+        JOptionPane.showMessageDialog(null, "Penyewaan Added!");
+        loadData();
+        emptyField();
+    }//GEN-LAST:event_btn_saveActionPerformed
+
+    private void txt_customer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_customer1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_customer1ActionPerformed
+
+    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
+        
+    }//GEN-LAST:event_btn_searchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,10 +506,41 @@ public class DashboardManagePenyewaanPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_clear;
+    private javax.swing.JButton btn_customer;
+    private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_edit;
+    private javax.swing.JButton btn_home;
+    private javax.swing.JButton btn_logout;
+    private javax.swing.JButton btn_manageAdmin;
+    private javax.swing.JButton btn_manageGame;
+    private javax.swing.JButton btn_managePs;
+    private javax.swing.JButton btn_print1;
+    private javax.swing.JButton btn_refresh;
+    private javax.swing.JButton btn_save;
+    private javax.swing.JButton btn_search;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tbl_penyewaan;
+    private com.toedter.calendar.JDateChooser tgl_sewa;
+    private javax.swing.JTextField txt_customer1;
+    private javax.swing.JTextField txt_game1;
+    private javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txt_lamasewa;
+    private javax.swing.JTextField txt_ps;
     // End of variables declaration//GEN-END:variables
 }

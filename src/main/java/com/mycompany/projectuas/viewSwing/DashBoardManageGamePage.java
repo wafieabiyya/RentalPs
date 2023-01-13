@@ -64,7 +64,7 @@ public class DashBoardManageGamePage extends javax.swing.JFrame {
             "ID Game", "Nama Game"
         }));
     }
-    private Game findGame (int id){
+    private Game findGame (String id){
         Game game = new Game();
         gameService = new GameServiceImpl();
         game = gameService.findById(id);
@@ -89,10 +89,6 @@ public class DashBoardManageGamePage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txt_IdGame = new javax.swing.JTextField();
@@ -109,101 +105,101 @@ public class DashBoardManageGamePage extends javax.swing.JFrame {
         btn_print = new javax.swing.JButton();
         btn_search = new javax.swing.JButton();
         btn_referesh = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btn_logout = new javax.swing.JButton();
         btn_home = new javax.swing.JButton();
         btn_manageGame = new javax.swing.JButton();
         btn_manageAdmin = new javax.swing.JButton();
-        btn_manageCustomer = new javax.swing.JButton();
         btn_managePs = new javax.swing.JButton();
-        btn_logout = new javax.swing.JButton();
+        btn_customer = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setText("Welcome to Game Management Page");
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel2.setText("This page is management game. Functions to manage existing games.");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\playstation.png")); // NOI18N
-        jLabel3.setText("jLabel3");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(215, 215, 215))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(174, 174, 174))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         jLabel4.setText("ID Game       :");
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(6, 19, 140, 20);
 
+        txt_IdGame.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txt_IdGame.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
         txt_IdGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_IdGameActionPerformed(evt);
             }
         });
+        jPanel3.add(txt_IdGame);
+        txt_IdGame.setBounds(150, 20, 32, 20);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Nama Game :");
+        jLabel5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        jLabel5.setText("Nama Game     :");
+        jPanel3.add(jLabel5);
+        jLabel5.setBounds(10, 60, 140, 20);
 
+        txt_namaGame.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txt_namaGame.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
         txt_namaGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_namaGameActionPerformed(evt);
             }
         });
+        jPanel3.add(txt_namaGame);
+        txt_namaGame.setBounds(150, 50, 160, 32);
 
+        btn_save.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         btn_save.setText("Save");
+        btn_save.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
         btn_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_saveActionPerformed(evt);
             }
         });
+        jPanel3.add(btn_save);
+        btn_save.setBounds(485, 6, 123, 48);
 
+        btn_delete.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         btn_delete.setText("Delete");
+        btn_delete.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
             }
         });
+        jPanel3.add(btn_delete);
+        btn_delete.setBounds(652, 6, 124, 48);
 
+        btn_edit.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         btn_edit.setText("Edit");
+        btn_edit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
         btn_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editActionPerformed(evt);
             }
         });
+        jPanel3.add(btn_edit);
+        btn_edit.setBounds(485, 66, 123, 48);
 
+        btn_clear.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         btn_clear.setText("Clear");
+        btn_clear.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
         btn_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_clearActionPerformed(evt);
             }
         });
+        jPanel3.add(btn_clear);
+        btn_clear.setBounds(652, 66, 124, 48);
 
+        tbl_game.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
         tbl_game.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -234,301 +230,199 @@ public class DashBoardManageGamePage extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_game);
 
+        jPanel3.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 370, 800, 180);
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("LIST GAME");
+        jPanel3.add(jLabel6);
+        jLabel6.setBounds(10, 270, 94, 25);
 
+        txt_search.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txt_search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jPanel3.add(txt_search);
+        txt_search.setBounds(10, 300, 92, 31);
+
+        btn_print.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
         btn_print.setText("Print");
+        btn_print.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
         btn_print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_printActionPerformed(evt);
             }
         });
+        jPanel3.add(btn_print);
+        btn_print.setBounds(485, 132, 291, 48);
 
+        btn_search.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        btn_search.setForeground(new java.awt.Color(4, 21, 98));
         btn_search.setText("Search");
+        btn_search.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
         btn_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_searchActionPerformed(evt);
             }
         });
+        jPanel3.add(btn_search);
+        btn_search.setBounds(10, 340, 92, 19);
 
+        btn_referesh.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        btn_referesh.setForeground(new java.awt.Color(4, 21, 98));
         btn_referesh.setText("Refresh");
+        btn_referesh.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 1, true));
         btn_referesh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_refereshActionPerformed(evt);
             }
         });
+        jPanel3.add(btn_referesh);
+        btn_referesh.setBounds(120, 340, 90, 19);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_IdGame, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_namaGame, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(122, 122, 122)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btn_save, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                                    .addComponent(btn_edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(44, 44, 44)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btn_delete, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                    .addComponent(btn_clear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(btn_print, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txt_search, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_search, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_referesh, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(89, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_save, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addComponent(txt_IdGame, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txt_namaGame, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_edit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btn_print, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_referesh, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                    .addComponent(btn_search, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel4.add(jPanel3);
+        jPanel3.setBounds(120, 90, 830, 580);
 
-        btn_home.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\ri_home-5-line.png")); // NOI18N
-        btn_home.setText("Home");
-        btn_home.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_homeActionPerformed(evt);
-            }
-        });
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 3, new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(null);
 
-        btn_manageGame.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\teenyicons_game-controller-retro-outline.png")); // NOI18N
-        btn_manageGame.setText("Manage Game");
-        btn_manageGame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_manageGameActionPerformed(evt);
-            }
-        });
-
-        btn_manageAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\eos-icons_admin-outlined.png")); // NOI18N
-        btn_manageAdmin.setText("Manage Admin");
-        btn_manageAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_manageAdminActionPerformed(evt);
-            }
-        });
-
-        btn_manageCustomer.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\mdi_people-group-outline.png")); // NOI18N
-        btn_manageCustomer.setText("Manage Customer");
-        btn_manageCustomer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_manageCustomerActionPerformed(evt);
-            }
-        });
-
-        btn_managePs.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\iconoir_playstation-gamepad_1.png")); // NOI18N
-        btn_managePs.setText("Manage Ps");
-        btn_managePs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_managePsActionPerformed(evt);
-            }
-        });
-
-        btn_logout.setIcon(new javax.swing.ImageIcon("C:\\Users\\lenovo\\Documents\\NetBeansProjects\\ProjectImage\\simple-line-icons_logout.png")); // NOI18N
-        btn_logout.setText("Log Out");
+        btn_logout.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_logout.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\log-out.png")); // NOI18N
+        btn_logout.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_logout.setBorderPainted(false);
+        btn_logout.setContentAreaFilled(false);
         btn_logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_logoutActionPerformed(evt);
             }
         });
+        jPanel2.add(btn_logout);
+        btn_logout.setBounds(20, 600, 50, 45);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_manageGame, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_home, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_manageAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_manageCustomer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_managePs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_logout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(btn_home, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_manageGame, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_manageAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_manageCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_managePs, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
-        );
+        btn_home.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_home.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\house.png")); // NOI18N
+        btn_home.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_home.setBorderPainted(false);
+        btn_home.setContentAreaFilled(false);
+        btn_home.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_homeActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_home);
+        btn_home.setBounds(30, 120, 50, 49);
+
+        btn_manageGame.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_manageGame.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\console.png")); // NOI18N
+        btn_manageGame.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_manageGame.setBorderPainted(false);
+        btn_manageGame.setContentAreaFilled(false);
+        btn_manageGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_manageGameActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_manageGame);
+        btn_manageGame.setBounds(30, 180, 50, 49);
+
+        btn_manageAdmin.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_manageAdmin.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\user.png")); // NOI18N
+        btn_manageAdmin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_manageAdmin.setBorderPainted(false);
+        btn_manageAdmin.setContentAreaFilled(false);
+        btn_manageAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_manageAdminActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_manageAdmin);
+        btn_manageAdmin.setBounds(30, 240, 50, 49);
+
+        btn_managePs.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_managePs.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\videogame.png")); // NOI18N
+        btn_managePs.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_managePs.setBorderPainted(false);
+        btn_managePs.setContentAreaFilled(false);
+        btn_managePs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_managePsActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_managePs);
+        btn_managePs.setBounds(30, 300, 50, 49);
+
+        btn_customer.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        btn_customer.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\customer.png")); // NOI18N
+        btn_customer.setToolTipText("");
+        btn_customer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(4, 21, 98), 2, true));
+        btn_customer.setBorderPainted(false);
+        btn_customer.setContentAreaFilled(false);
+        btn_customer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_customerActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_customer);
+        btn_customer.setBounds(30, 360, 50, 49);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\Kuliah\\Semester 3\\ISB-205 Pemrograman Berbasis Objek\\Project Rental PS\\RentalPs\\src\\main\\java\\IMAGE REPAIR\\playstation-logotype.png")); // NOI18N
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(20, 20, 70, 64);
+
+        jPanel4.add(jPanel2);
+        jPanel2.setBounds(0, 0, 110, 680);
+
+        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
+        jLabel1.setText("Welcome to Manage Game");
+        jPanel4.add(jLabel1);
+        jLabel1.setBounds(360, 10, 340, 30);
+
+        jLabel11.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jLabel11.setText("This application helps manage the needs of the Playstation rental business easily.");
+        jPanel4.add(jLabel11);
+        jLabel11.setBounds(160, 40, 730, 20);
+
+        jLabel12.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jLabel12.setText("You can control anytime and anywhere through this application.");
+        jPanel4.add(jLabel12);
+        jLabel12.setBounds(250, 60, 560, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_manageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manageAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_manageAdminActionPerformed
+    private void btn_refereshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refereshActionPerformed
+        loadData();
+    }//GEN-LAST:event_btn_refereshActionPerformed
 
-    private void btn_manageGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manageGameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_manageGameActionPerformed
-
-    private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
-        // TODO add your handling code here:
-        DashboardHomePage dashboardHomePage = new DashboardHomePage();
-        dashboardHomePage.setVisible(true);
-    }//GEN-LAST:event_btn_homeActionPerformed
-
-    private void txt_IdGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdGameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_IdGameActionPerformed
-
-    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
-        int id;
-        gameService = new GameServiceImpl();
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        
-        id = Integer.parseInt(txt_IdGame.getText());
-        int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure want to delete it?",""
-                + "warning", dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            
-            gameService.delete(id);
-            loadData();
-            emptyField();
+    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
+        String id;
+        Game searchedGame = new Game();
+        id = (txt_search.getText());
+        searchedGame = findGame(id);
+        if (searchedGame !=null){
+            loadData(searchedGame);
         }
-    }//GEN-LAST:event_btn_deleteActionPerformed
-
-    private void btn_manageCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manageCustomerActionPerformed
-        DashboardManageCustomerPage dashboardManageCustomerPage = new DashboardManageCustomerPage();
-        dashboardManageCustomerPage.setVisible(true);
-    }//GEN-LAST:event_btn_manageCustomerActionPerformed
-
-    private void txt_namaGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_namaGameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_namaGameActionPerformed
-
-    private void tbl_gameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_gameMouseClicked
-        String nama; 
-        int id;
-        int row = tbl_game.getSelectedRow();
-        id = Integer.parseInt(tbl_game.getValueAt(row, 0).toString());
-        nama = tbl_game.getValueAt(row, 1).toString();
-        
-        txt_IdGame.setText(id+"");
-        txt_namaGame.setText(nama);
-    }//GEN-LAST:event_tbl_gameMouseClicked
-
-    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-        String namaGame;
-        int ID;
-        gameService = new GameServiceImpl();
-        ID = Integer.parseInt(txt_IdGame.getText());
-        namaGame = txt_namaGame.getText();
-        
-        Game game = new Game();
-        game.setID(ID);
-        game.setNamaGame(namaGame);
-        
-        gameService.create(game);
-        JOptionPane.showMessageDialog(null, "Game Added!");
-        loadData();
+        else{
+            JOptionPane.showMessageDialog(null, "ID not founded!");
+        }
         emptyField();
-    }//GEN-LAST:event_btn_saveActionPerformed
-
-    private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
-        String namaGame;
-        int ID;
-        gameService = new GameServiceImpl();
-        ID = Integer.parseInt(txt_IdGame.getText());
-        namaGame = txt_namaGame.getText();
-        
-        Game game = new Game();
-        game.setID(ID);
-        game.setNamaGame(namaGame);
-        
-        gameService.update(game);
-        JOptionPane.showMessageDialog(null, "Game Updated!");
-        loadData();
-        emptyField();
-    }//GEN-LAST:event_btn_editActionPerformed
-
-    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-        emptyField();
-    }//GEN-LAST:event_btn_clearActionPerformed
-
-    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
-        LoginPage loginPage = new LoginPage();
-        loginPage.setVisible(true);
-        close();
-    }//GEN-LAST:event_btn_logoutActionPerformed
+    }//GEN-LAST:event_btn_searchActionPerformed
 
     private void btn_printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_printActionPerformed
         MessageFormat header = new MessageFormat("Report List Game");
         MessageFormat footer = new MessageFormat("Page {0, number, integer}");
-        
+
         try {
             tbl_game.print(JTable.PrintMode.FIT_WIDTH,header,footer);
         } catch (PrinterException e) {
@@ -536,28 +430,109 @@ public class DashBoardManageGamePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_printActionPerformed
 
-    private void btn_refereshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_refereshActionPerformed
-       loadData();
-    }//GEN-LAST:event_btn_refereshActionPerformed
+    private void tbl_gameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_gameMouseClicked
+        String nama;
+        String id;
+        int row = tbl_game.getSelectedRow();
+        id = (tbl_game.getValueAt(row, 0).toString());
+        nama = tbl_game.getValueAt(row, 1).toString();
 
-    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
-       int id;
-       Game searchedGame = new Game();
-       id = Integer.parseInt(txt_search.getText());
-       searchedGame = findGame(id);
-       if (searchedGame !=null){
-           loadData(searchedGame);
-       }
-       else{
-           JOptionPane.showMessageDialog(null, "ID not founded!");
-       }
-       emptyField();
-    }//GEN-LAST:event_btn_searchActionPerformed
+        txt_IdGame.setText(id+"");
+        txt_namaGame.setText(nama);
+    }//GEN-LAST:event_tbl_gameMouseClicked
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        emptyField();
+    }//GEN-LAST:event_btn_clearActionPerformed
+
+    private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
+        String namaGame,ID;
+       
+        gameService = new GameServiceImpl();
+        ID =(txt_IdGame.getText());
+        namaGame = txt_namaGame.getText();
+
+        Game game = new Game();
+        game.setID(ID);
+        game.setNamaGame(namaGame);
+
+        gameService.update(game);
+        JOptionPane.showMessageDialog(null, "Game Updated!");
+        loadData();
+        emptyField();
+    }//GEN-LAST:event_btn_editActionPerformed
+
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
+        String id;
+        gameService = new GameServiceImpl();
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+
+        id = (txt_IdGame.getText());
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure want to delete it?",""
+            + "warning", dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+
+            gameService.delete(id);
+            loadData();
+            emptyField();
+        }
+    }//GEN-LAST:event_btn_deleteActionPerformed
+
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+        String namaGame,ID;
+       
+        gameService = new GameServiceImpl();
+        ID = (txt_IdGame.getText());
+        namaGame = txt_namaGame.getText();
+
+        Game game = new Game();
+        game.setID(ID);
+        game.setNamaGame(namaGame);
+
+        gameService.create(game);
+        JOptionPane.showMessageDialog(null, "Game Added!");
+        loadData();
+        emptyField();
+    }//GEN-LAST:event_btn_saveActionPerformed
+
+    private void txt_namaGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_namaGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_namaGameActionPerformed
+
+    private void txt_IdGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdGameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_IdGameActionPerformed
+
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+        LoginPage loginPage = new LoginPage();
+        loginPage.setVisible(true);
+        close();
+    }//GEN-LAST:event_btn_logoutActionPerformed
+
+    private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
+        DashboardHomePage dashboardHomePage = new DashboardHomePage();
+        dashboardHomePage.setVisible(true);
+    }//GEN-LAST:event_btn_homeActionPerformed
+
+    private void btn_manageGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manageGameActionPerformed
+        DashBoardManageGamePage dashBoardManageGamePage = new DashBoardManageGamePage();
+        dashBoardManageGamePage.setVisible(true);
+    }//GEN-LAST:event_btn_manageGameActionPerformed
 
     private void btn_managePsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_managePsActionPerformed
-       DashboardManagePs dashboardManagePs = new DashboardManagePs();
-       dashboardManagePs.setVisible(true);
+        DashboardManagePs dashboardManagePs = new DashboardManagePs();
+        dashboardManagePs.setVisible(true);
     }//GEN-LAST:event_btn_managePsActionPerformed
+
+    private void btn_customerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_customerActionPerformed
+        DashboardManageCustomerPage dashboardManageCustomerPage = new DashboardManageCustomerPage();
+        dashboardManageCustomerPage.setVisible(true);
+    }//GEN-LAST:event_btn_customerActionPerformed
+
+    private void btn_manageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_manageAdminActionPerformed
+    DashboardManagePenyewaanPage dashboardManagePenyewaanPage = new DashboardManagePenyewaanPage();
+       dashboardManagePenyewaanPage.setVisible(true);
+    }//GEN-LAST:event_btn_manageAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -596,12 +571,12 @@ public class DashBoardManageGamePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_clear;
+    private javax.swing.JButton btn_customer;
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_home;
     private javax.swing.JButton btn_logout;
     private javax.swing.JButton btn_manageAdmin;
-    private javax.swing.JButton btn_manageCustomer;
     private javax.swing.JButton btn_manageGame;
     private javax.swing.JButton btn_managePs;
     private javax.swing.JButton btn_print;
@@ -609,7 +584,8 @@ public class DashBoardManageGamePage extends javax.swing.JFrame {
     private javax.swing.JButton btn_save;
     private javax.swing.JButton btn_search;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

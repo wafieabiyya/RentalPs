@@ -9,30 +9,32 @@ package com.mycompany.projectuas.pojo;
  * @author lenovo
  */
 public class Penyewaan {
-    private Integer idPenyewaan;
+    private String idPenyewaan;
     String tanggal;
     private int lamaSewa;
     private Customer customer;
     private Game game;
     private Playstation playstation;
+    private double totalHarga;
 
     public Penyewaan() {
     }
 
-    public Penyewaan(Integer idPenyewaan, String tanggal, int lamaSewa, Customer customer, Game game, Playstation playstation) {
+    public Penyewaan(String idPenyewaan, String tanggal, int lamaSewa, Customer customer, Game game, Playstation playstation, double totalHarga) {
         this.idPenyewaan = idPenyewaan;
         this.tanggal = tanggal;
         this.lamaSewa = lamaSewa;
         this.customer = customer;
         this.game = game;
         this.playstation = playstation;
+        this.totalHarga = totalHarga;
     }
 
-    public Integer getIdPenyewaan() {
+    public String getIdPenyewaan() {
         return idPenyewaan;
     }
 
-    public void setIdPenyewaan(Integer idPenyewaan) {
+    public void setIdPenyewaan(String idPenyewaan) {
         this.idPenyewaan = idPenyewaan;
     }
 
@@ -76,6 +78,13 @@ public class Penyewaan {
         this.playstation = playstation;
     }
 
+    public double getTotalHarga() {
+        return totalHarga;
+    }
+
+    public void setTotalHarga(double totalHarga) {
+        this.totalHarga = totalHarga;
+    }
     
 
 }

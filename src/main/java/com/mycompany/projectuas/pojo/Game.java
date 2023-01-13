@@ -9,22 +9,22 @@ package com.mycompany.projectuas.pojo;
  * @author lenovo
  */
 public class Game {
-    private Integer ID;
+    private String ID;
     private String namaGame;
 
     public Game() {
     }
 
-    public Game(Integer ID, String namaGame) {
+    public Game(String ID, String namaGame) {
         this.ID = ID;
         this.namaGame = namaGame;
     }
 
-    public Integer getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -35,6 +35,7 @@ public class Game {
     public void setNamaGame(String namaGame) {
         this.namaGame = namaGame;
     }
+
     
     
 }
